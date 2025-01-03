@@ -1,0 +1,65 @@
+{
+    "test_str": {
+        "type": "str",
+        "default_class": "strUi",
+        "constructor_values": {
+            "value": "hola",
+            "min_length": 0,
+            "max_length": 300
+        },
+        "default_params": {
+            "value": {
+                "type": "str",
+                "default": null
+            },
+            "min_length": {
+                "type": "int",
+                "default": 0
+            },
+            "max_length": {
+                "type": "int",
+                "default": 100
+            }
+        }
+    },
+    "test_list": {
+        "type": "list",
+        "default_class": "listUi",
+        "constructor_values": {
+            "value": [
+                1,
+                2,
+                3
+            ]
+        },
+        "default_params": {
+            "value": {
+                "type": "list",
+                "default": null
+            }
+        }
+    },
+    "test_int": {
+        "type": "int",
+        "default_class": "intUi",
+        "constructor_values": {
+            "value": 5,
+            "min_value": 0,
+            "max_value": 100
+        },
+        "default_params": {
+            "value": {
+                "type": "int",
+                "default": null
+            },
+            "min_value": {
+                "type": "int",
+                "default": 0
+            },
+            "max_value": {
+                "type": "int",
+                "default": 100
+            }
+        }
+    }
+}
