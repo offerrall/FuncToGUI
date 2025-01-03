@@ -29,10 +29,13 @@ def inspect_params(func):
         default = param.default
         type_hint = param.annotation
 
-        current_values = {
-            field: getattr(default, field)
-            for field in default.__dataclass_fields__
-        }
+        try:
+            current_values = {
+                field: getattr(default, field)
+                for field in default.__dataclass_fields__
+            }
+        except AttributeError:
+            raise TypeError(f"Parameter {name} must be a type hint")
         
         params_info[name] = {
             'type': type_hint.__name__,
