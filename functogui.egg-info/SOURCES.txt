@@ -1,0 +1,7 @@
+setup.py
+functogui/__init__.py
+functogui/ui_types.py
+functogui.egg-info/PKG-INFO
+functogui.egg-info/SOURCES.txt
+functogui.egg-info/dependency_links.txt
+functogui.egg-info/top_level.txt
