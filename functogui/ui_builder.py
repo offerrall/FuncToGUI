@@ -18,7 +18,20 @@ class MainLayout(BoxLayout):
         self.function = function
 
         properties = inspect_params(function)
-        print(properties)
+
+        for prop in properties:
+            type_propertie = properties[prop]["type"]
+            constructor_values = properties[prop]["constructor_values"]
+            default_params = properties[prop]["default_params"]
+
+            if type_propertie == "int":
+                values = {"name": prop}
+                
+                for key, value in default_params.items():
+                    values[key] = value["default"]
+                
+                print(values)
+
     
 
 class App(KivyApp):

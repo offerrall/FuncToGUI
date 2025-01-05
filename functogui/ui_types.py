@@ -4,19 +4,19 @@ import inspect
 @dataclass
 class strUi:
     """UI hints for string parameters"""
-    value: str
+    value: str = ""
     min_length: int = 0
     max_length: int = 100
 
 @dataclass
 class listUi:
     """UI hints for list parameters"""
-    value: list
+    value: list = ""
 
 @dataclass
 class intUi:
     """UI hints for int parameters"""
-    value: int
+    value: int = 0
     min_value: int = 0
     max_value: int = 100
 
