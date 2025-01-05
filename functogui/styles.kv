@@ -1,4 +1,6 @@
 #:set background_color [0.298, 0.298, 0.298, 1.0]
+#:set background_color_2 [0.227, 0.223, 0.227, 1.0]
+#:set background_color_3 [0.121, 0.117, 0.121, 1.0]
 
 
 <IntInput@TextInput>:
@@ -15,6 +17,7 @@
     Label:
         text: root.name
         font_size: '15sp'
+    
 
 <CustomIntProperty>:
     BoxLayout:
@@ -36,11 +39,72 @@
 
 <MainLayout>:
     orientation: 'vertical'
-    padding: dp(30)
+    padding: dp(10)
+    spacing: dp(10)
 
     canvas.before:
         Color:
-            rgba: background_color
+            rgba: background_color_3
         Rectangle:
             size: self.size
             pos: self.pos
+    
+    Label:
+        text: root.title
+        font_size: '16sp'
+        size_hint_y: None
+        height: dp(40)
+
+        canvas.before:
+            Color:
+                rgba: background_color_2
+            Line:
+                rectangle: self.x, self.y, self.width, self.height
+                width: dp(1)
+
+    BoxLayout:
+        id: properties_layout_container
+        orientation: 'vertical'
+        spacing: dp(10)
+        padding: dp(5)
+        size_hint_y: 0.8
+        
+        canvas.before:
+            Color:
+                rgba: background_color_2
+            Line:
+                rectangle: self.x, self.y, self.width, self.height
+                width: dp(1)
+        Label:
+            text: 'Properties'
+            font_size: '15sp'
+            size_hint_y: None
+            height: dp(30)
+
+        BoxLayout:
+            id: properties_layout
+            orientation: 'vertical'
+            spacing: dp(10)
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: 0.2
+        spacing: dp(10)
+
+        canvas.before:
+            Color:
+                rgba: background_color_2
+            Line:
+                rectangle: self.x, self.y, self.width, self.height
+                width: dp(1)
+        
+        Label:
+            text: 'Result'
+            font_size: '15sp'
+            size_hint_y: None
+            height: dp(30)
+        
+        BoxLayout:
+            orientation: 'vertical'
+            id: result_layout
+            
