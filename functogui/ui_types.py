@@ -20,9 +20,17 @@ class intUi:
     min_value: int = 0
     max_value: int = 100
 
-
 def inspect_params(func):
-    
+    """Inspect the parameters of a function and return a dictionary with information about each parameter.
+    Each parameter is represented by a dictionary with the following keys:
+
+    - type: The type hint of the parameter
+    - default_class: The class of the default value
+    - constructor_values: The values used to create the default value
+    - default_params: A dictionary with information about the parameters of the default value
+        - type: The type hint of the parameter
+        - default: The default value of the parameter
+    """
     params_info = {}
     
     for name, param in inspect.signature(func).parameters.items():
