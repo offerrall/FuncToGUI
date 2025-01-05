@@ -47,9 +47,6 @@ class MainLayout(BoxLayout):
 
             self.ids.properties_layout.add_widget(prop)
 
-        empty_widget = Widget()
-        self.ids.properties_layout.add_widget(empty_widget)
-
         Clock.schedule_once(lambda dt: self.calculate_function(), 0.1)
     
     def calculate_function(self):
