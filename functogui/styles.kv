@@ -66,45 +66,46 @@
         id: properties_layout_container
         orientation: 'vertical'
         spacing: dp(10)
-        padding: dp(5)
         size_hint_y: 0.8
         
-        canvas.before:
-            Color:
-                rgba: background_color_2
-            Line:
-                rectangle: self.x, self.y, self.width, self.height
-                width: dp(1)
         Label:
             text: 'Properties'
             font_size: '16sp'
             size_hint_y: None
-            height: dp(30)
+            height: dp(20)
 
         BoxLayout:
             id: properties_layout
             orientation: 'vertical'
             spacing: dp(10)
+            padding: dp(10)
+
+            canvas.before:
+                Color:
+                    rgba: background_color_2
+                Line:
+                    rectangle: self.x, self.y, self.width, self.height
+                    width: dp(1)
 
     BoxLayout:
         orientation: 'vertical'
         size_hint_y: 0.2
         spacing: dp(10)
-
-        canvas.before:
-            Color:
-                rgba: background_color_2
-            Line:
-                rectangle: self.x, self.y, self.width, self.height
-                width: dp(1)
         
         Label:
             text: 'Result'
             font_size: '16sp'
             size_hint_y: None
-            height: dp(30)
+            height: dp(20)
         
         BoxLayout:
             orientation: 'vertical'
             id: result_layout
+
+            canvas.before:
+                Color:
+                    rgba: background_color_2
+                Line:
+                    rectangle: self.x, self.y, self.width, self.height
+                    width: dp(1)
             
