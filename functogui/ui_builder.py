@@ -29,8 +29,11 @@ class MainLayout(BoxLayout):
                 
                 for key, value in default_params.items():
                     values[key] = value["default"]
-                
-                print(values)
+
+                for key, value in constructor_values.items():
+                    values[key] = value
+
+                self.add_widget(CustomIntProperty(**values))
 
     
 

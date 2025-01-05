@@ -11,16 +11,16 @@ class CustomProperty(BoxLayout):
 
 
 class CustomIntProperty(CustomProperty):
-    int_value = NumericProperty(0)
-    min_value = NumericProperty(-1000000000000)
-    max_value = NumericProperty(1000000000000)
+    value = NumericProperty(0)
+    min_value = NumericProperty(0)
+    max_value = NumericProperty(0)
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def on_kv_post(self, base_widget):
-        self.ids.int_textinput.text = str(self.int_value)
-        self.ids.int_slider.value = self.int_value
+        self.ids.int_textinput.text = str(self.value)
+        self.ids.int_slider.value = self.value
 
     def set_property_value(self, value):
         try:

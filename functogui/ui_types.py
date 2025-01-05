@@ -17,8 +17,8 @@ class listUi:
 class intUi:
     """UI hints for int parameters"""
     value: int = 0
-    min_value: int = 0
-    max_value: int = 100
+    min_value: int = -1000
+    max_value: int = 1000
 
 def inspect_params(func):
     """Inspect the parameters of a function and return a dictionary with information about each parameter.
