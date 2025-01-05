@@ -10,6 +10,8 @@ from pathlib import Path
 from .ui_types import inspect_params
 from .properties import *
 
+from kivy.clock import Clock
+
 CURRENT_DIR = Path(__file__).parent.absolute()
 KV_FILE = CURRENT_DIR / "styles.kv"
 WINDOW_WIDTH = dp(400)
@@ -30,23 +32,25 @@ class MainLayout(BoxLayout):
             type_propertie = properties[prop]["type"]
             constructor_values = properties[prop]["constructor_values"]
             default_params = properties[prop]["default_params"]
+            values = {"name": prop.replace("_", " ").title()}
+            
+            for key, value in default_params.items():
+                values[key] = value["default"]
+
+            for key, value in constructor_values.items():
+                values[key] = value
 
             if type_propertie == "int":
-                values = {"name": prop.replace("_", " ").title()}
-                
-                for key, value in default_params.items():
-                    values[key] = value["default"]
-
-                for key, value in constructor_values.items():
-                    values[key] = value
-
                 prop = CustomIntProperty(**values)
-                prop.value_changed_callback = self.calculate_function
+            
+            prop.value_changed_callback = self.calculate_function
 
-                self.ids.properties_layout.add_widget(prop)
+            self.ids.properties_layout.add_widget(prop)
 
         empty_widget = Widget()
         self.ids.properties_layout.add_widget(empty_widget)
+
+        Clock.schedule_once(lambda dt: self.calculate_function(), 0.1)
     
     def calculate_function(self):
         properties = self.ids.properties_layout.children
