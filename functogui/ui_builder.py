@@ -1,5 +1,6 @@
 from kivy.app import App as KivyApp
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from pathlib import Path
 
@@ -35,6 +36,8 @@ class MainLayout(BoxLayout):
 
                 self.add_widget(CustomIntProperty(**values))
 
+        empty_widget = Widget()
+        self.add_widget(empty_widget)
     
 
 class App(KivyApp):
