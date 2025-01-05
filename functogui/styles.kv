@@ -17,6 +17,9 @@
     Label:
         text: root.name
         font_size: '15sp'
+        halign: 'left'
+        valign: 'middle'
+        text_size: self.size
     
 
 <CustomIntProperty>:
@@ -70,11 +73,13 @@
         height: self.minimum_height
         
         Label:
-            text: 'Properties'
+            text: 'Properties' + ' ' * 2
             font_size: '16sp'
             size_hint_y: None
-            height: dp(20)
+            height: dp(15)
             color: label_secundary_color
+            halign: 'right'
+            text_size: self.size
 
         BoxLayout:
             id: properties_layout
@@ -96,11 +101,13 @@
         spacing: dp(10)
         
         Label:
-            text: 'Result'
+            text: 'Result' + ' ' * 2
             font_size: '16sp'
             size_hint_y: None
-            height: dp(20)
+            height: dp(15)
             color: label_secundary_color
+            halign: 'right'
+            text_size: self.size
         
         BoxLayout:
             orientation: 'vertical'

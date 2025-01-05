@@ -26,7 +26,7 @@ class MainLayout(BoxLayout):
 
         properties = inspect_params(function)
         name_function = function.__name__
-        self.title = name_function.replace("_", " ").title()
+        self.title = "  " + name_function.replace("_", " ").title()
 
         for prop in properties:
             type_propertie = properties[prop]["type"]
