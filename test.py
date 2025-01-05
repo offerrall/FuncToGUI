@@ -1,9 +1,7 @@
-from functogui import App
 from functogui.ui_types import intUi
+from functogui import App
 
-
-
-num_leds = intUi(value=30, min_value=1, max_value=10000)
+num_leds = intUi(value=30, min_value=1, max_value=1000)
 brightness = intUi(value=100, min_value=0, max_value=100)
 
 def calculate_power(num_leds: int = num_leds,

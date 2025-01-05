@@ -1,6 +1,7 @@
 from kivy.app import App as KivyApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.widget import Widget
+from kivy.uix.label import Label
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.metrics import dp
@@ -39,10 +40,27 @@ class MainLayout(BoxLayout):
                 for key, value in constructor_values.items():
                     values[key] = value
 
-                self.ids.properties_layout.add_widget(CustomIntProperty(**values))
+                prop = CustomIntProperty(**values)
+                prop.value_changed_callback = self.calculate_function
+
+                self.ids.properties_layout.add_widget(prop)
 
         empty_widget = Widget()
         self.ids.properties_layout.add_widget(empty_widget)
+    
+    def calculate_function(self):
+        properties = self.ids.properties_layout.children
+        function_params = {}
+
+        for prop in properties:
+            if isinstance(prop, CustomIntProperty):
+                function_params[prop.name.lower().replace(" ", "_")] = prop.value
+
+        result = self.function(**function_params)
+        label_result = Label(text=str(result))
+        self.ids.result_layout.clear_widgets()
+        self.ids.result_layout.add_widget(label_result)
+
 
 class App(KivyApp):
     def __init__(self, function, **kwargs):

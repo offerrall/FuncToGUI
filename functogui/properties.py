@@ -32,5 +32,9 @@ class CustomIntProperty(CustomProperty):
             
             self.ids.int_textinput.text = str(value)
             self.ids.int_slider.value = value
+            self.value = value
+
+            if self.value_changed_callback:
+                self.value_changed_callback()
         except ValueError:
             pass
