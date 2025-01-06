@@ -42,6 +42,13 @@ class MainLayout(BoxLayout):
             prop = PROPERTY_TYPES[prop_info["default_class"]](**values)
             prop.value_changed_callback = lambda *_: self._schedule_calculation()
             self.ids.properties_layout.add_widget(prop)
+        
+        return_type = get_return_type_name(self.function)
+        print(f"({return_type})")
+
+        self.ids.result_layout.add_widget(Label(text="Result", size_hint_y=None, height=dp(500)))
+
+        Clock.schedule_once(self._ajust_size)
     
     def _schedule_calculation(self):
         Clock.unschedule(self.calculate_function)
@@ -51,12 +58,18 @@ class MainLayout(BoxLayout):
         props = {prop.name.lower().replace(" ", "_"): prop.value 
                 for prop in self.ids.properties_layout.children}
         result = self.function(**props)
+        self.ids.result_layout.children[0].text = str(result)
+    
+    def _ajust_size(self, *_):
+        total = 0
+        total += self.padding[1] + self.padding[3]
+        total += (self.ids.properties_label.height * 2)
+        total += self.ids.title_label.height
+        total += self.ids.result_layout.height
+        total += self.ids.properties_layout.height
+        max_width = dp(350)
 
-        return_type = get_return_type_name(self.function)
-        print(f"({return_type})")
-
-        self.ids.result_layout.clear_widgets()
-        self.ids.result_layout.add_widget(Label(text=str(result), size_hint_y=None, height=dp(50)))
+        Window.size = (max_width, total)
 
 class App(KivyApp):
     def __init__(self, function, **kwargs):
