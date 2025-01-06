@@ -76,6 +76,8 @@
 <MainLayout>:
     orientation: 'vertical'
     padding: dp(10)
+    size_hint_y: None
+    height: self.minimum_height
 
     canvas.before:
         Color:
@@ -130,6 +132,8 @@
 
     BoxLayout:
         orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
         
         Label:
             text: ' ' * 2 + 'Result'
@@ -144,6 +148,8 @@
         BoxLayout:
             orientation: 'vertical'
             id: result_layout
+            size_hint_y: None
+            height: self.minimum_height
 
             canvas.before:
                 Color:

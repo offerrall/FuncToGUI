@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import inspect
+from typing import Any, get_type_hints
 
 @dataclass
 class strUi:
@@ -26,6 +27,9 @@ class boolUi:
 class fileUi:
     value: str = ""
 
+def get_return_type_name(func: callable) -> str:
+    type_hints = get_type_hints(func)
+    return type_hints.get('return', Any).__name__
 
 def inspect_params(func: callable) -> dict:
     params_info = {}

@@ -7,11 +7,10 @@ from kivy.metrics import dp
 from kivy.clock import Clock
 from pathlib import Path
 
-from .ui_types import inspect_params
+from .ui_types import inspect_params, get_return_type_name
 from .ui_widgets import *
 
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
-WINDOW_WIDTH = dp(400)
 
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
@@ -52,16 +51,19 @@ class MainLayout(BoxLayout):
         props = {prop.name.lower().replace(" ", "_"): prop.value 
                 for prop in self.ids.properties_layout.children}
         result = self.function(**props)
+
+        return_type = get_return_type_name(self.function)
+        print(f"({return_type})")
+
         self.ids.result_layout.clear_widgets()
-        self.ids.result_layout.add_widget(Label(text=str(result)))
+        self.ids.result_layout.add_widget(Label(text=str(result), size_hint_y=None, height=dp(50)))
 
 class App(KivyApp):
     def __init__(self, function, **kwargs):
         super().__init__(**kwargs)
         self.function = function
-        for dim in ['minimum_width', 'maximum_width', 'size']:
-            setattr(Window, dim, (WINDOW_WIDTH, Window.size[1]) if dim == 'size' else WINDOW_WIDTH)
         self.run()
 
     def build(self):
-        return MainLayout(self.function)
+        main_layout = MainLayout(self.function)
+        return main_layout
