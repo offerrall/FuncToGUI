@@ -93,7 +93,15 @@
         height: dp(30)
         on_press: root.copy_text()
 
-
+<ImageFileReturn>:
+    size_hint_y: None
+    height: dp(300)
+    orientation: 'vertical'
+    padding: dp(10)
+    
+    Image:
+        id: image
+        source: root.image_path
 
 <MainLayout>:
     orientation: 'vertical'

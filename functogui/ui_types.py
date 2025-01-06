@@ -36,7 +36,7 @@ class intReturn:
 class boolReturn:
     pass
 
-class fileReturn:
+class imageFileReturn:
     pass
 
 

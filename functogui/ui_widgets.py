@@ -143,3 +143,9 @@ class StrReturn(BoxLayout):
     def copy_text(self):
         from kivy.core.clipboard import Clipboard
         Clipboard.copy(self.text)
+
+class ImageFileReturn(BoxLayout):
+    image_path = StringProperty("")
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
