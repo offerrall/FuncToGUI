@@ -39,7 +39,6 @@ class boolReturn:
 class imageFileReturn:
     pass
 
-
 def get_return_type_name(func: callable) -> str:
     type_hints = get_type_hints(func)
     return type_hints.get('return', Any).__name__
