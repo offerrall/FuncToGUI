@@ -7,7 +7,7 @@
 **Easily turn your Python functions into GUI applications.**  
 Perfect for internal tools, quick testing, or prototypes. FuncToGUI is cross-platform, updates in real-time, and requires no additional UI code. Implemented in fewer than 1000 lines of code!
 
-FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://github.com/kivy/pyjnius) for file handling.
+FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://github.com/kivy/plyer) for file handling.
 
 ## Key Features
 - **Function-to-GUI Transformation**: Turn your function parameters into a GUI interface with minimal setup.
@@ -40,3 +40,23 @@ pip install -e .
 - [Examples](./examples)
 
 The examples folder contains all the examples you need to understand how to use FuncToGUI.
+
+## Documentation
+
+**`functogui.ui_types`**
+- Define input types: `strUi`, `intUi`, `boolUi`, `fileUi`
+- Define return types: `strReturn`, `intReturn`, `boolReturn`, `imageFileReturn`
+- Handle function inspection and type extraction
+
+**`functogui.ui_widgets`**
+- Custom Kivy widgets for each UI type
+- Handle user input and validation
+- Manage real-time callback updates
+
+**`functogui.app_builder`**
+- Creates dynamic GUI layout
+- Manages window properties
+- Handles function execution and result display
+
+**`functogui.styles`**
+- Contains all the styles for the GUI

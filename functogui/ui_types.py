@@ -40,10 +40,12 @@ class imageFileReturn:
     pass
 
 def get_return_type_name(func: callable) -> str:
+    """Get the name of the return type of a function."""
     type_hints = get_type_hints(func)
     return type_hints.get('return', Any).__name__
 
 def inspect_params(func: callable) -> dict:
+    """Inspect the parameters of a function and return a dictionary with the information."""
     params_info = {}
     
     for name, param in inspect.signature(func).parameters.items():
