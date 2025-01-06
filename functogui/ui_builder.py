@@ -44,6 +44,8 @@ class MainLayout(BoxLayout):
                 prop = CustomIntProperty(**values)
             elif type_propertie == "str":
                 prop = CustomStrProperty(**values)
+            elif type_propertie == "bool":
+                prop = CustomBoolProperty(**values)
             
             prop.value_changed_callback = self.calculate_function_timed
 

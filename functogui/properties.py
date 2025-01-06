@@ -60,3 +60,19 @@ class CustomIntProperty(CustomProperty):
                 self.value_changed_callback()
         except ValueError:
             pass
+
+class CustomBoolProperty(CustomProperty):
+    value = ObjectProperty(True)
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+    
+    def on_kv_post(self, base_widget):
+        self.ids.bool_switch.active = self.value
+    
+    def set_property_value(self, value):
+        self.value = value
+        self.ids.bool_switch.active = value
+
+        if self.value_changed_callback:
+            self.value_changed_callback()

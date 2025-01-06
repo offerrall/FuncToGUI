@@ -21,7 +21,6 @@
         valign: 'middle'
         text_size: self.size
 
-
 <CustomIntProperty>:
     BoxLayout:
         orientation: 'horizontal'
@@ -47,6 +46,12 @@
         background_color: [0, 0, 0, 0.5]
         foreground_color: [1, 1, 1, 1]
         on_text: root.set_property_value(self.text)
+
+<CustomBoolProperty>:
+    Switch:
+        id: bool_switch
+        active: True
+        on_active: root.set_property_value(self.active)
 
 <MainLayout>:
     orientation: 'vertical'

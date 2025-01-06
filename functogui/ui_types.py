@@ -20,6 +20,11 @@ class intUi:
     min_value: int = -1000
     max_value: int = 1000
 
+@dataclass
+class boolUi:
+    """UI hints for bool parameters"""
+    value: bool = True
+
 def inspect_params(func):
     """Inspect the parameters of a function and return a dictionary with information about each parameter.
     Each parameter is represented by a dictionary with the following keys:
