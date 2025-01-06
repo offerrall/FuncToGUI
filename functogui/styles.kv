@@ -20,7 +20,7 @@
         halign: 'left'
         valign: 'middle'
         text_size: self.size
-    
+
 
 <CustomIntProperty>:
     BoxLayout:
@@ -39,6 +39,14 @@
             size_hint_x: 0.3
             on_text: root.set_property_value(self.text)
 
+<CustomStrProperty>:
+    TextInput:
+        id: str_textinput
+        text: ""
+        multiline: False
+        background_color: [0, 0, 0, 0.5]
+        foreground_color: [1, 1, 1, 1]
+        on_text: root.set_property_value(self.text)
 
 <MainLayout>:
     orientation: 'vertical'

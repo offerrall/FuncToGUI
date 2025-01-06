@@ -42,20 +42,25 @@ class MainLayout(BoxLayout):
 
             if type_propertie == "int":
                 prop = CustomIntProperty(**values)
+            elif type_propertie == "str":
+                prop = CustomStrProperty(**values)
             
-            prop.value_changed_callback = self.calculate_function
+            prop.value_changed_callback = self.calculate_function_timed
 
             self.ids.properties_layout.add_widget(prop)
 
         Clock.schedule_once(lambda dt: self.calculate_function(), 0.1)
     
+    def calculate_function_timed(self, *args):
+        Clock.unschedule(self.calculate_function)
+        Clock.schedule_once(lambda dt: self.calculate_function(), 0.1)
+
     def calculate_function(self):
         properties = self.ids.properties_layout.children
         function_params = {}
 
         for prop in properties:
-            if isinstance(prop, CustomIntProperty):
-                function_params[prop.name.lower().replace(" ", "_")] = prop.value
+            function_params[prop.name.lower().replace(" ", "_")] = prop.value
 
         result = self.function(**function_params)
         label_result = Label(text=str(result))
@@ -71,6 +76,8 @@ class App(KivyApp):
         Window.size = (WINDOW_WIDTH, Window.size[1])
         Window.minimum_width = WINDOW_WIDTH
         Window.maximum_width = WINDOW_WIDTH
+
+        self.run()
 
     def build(self):
         return MainLayout(self.function)
