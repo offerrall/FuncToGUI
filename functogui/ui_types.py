@@ -27,6 +27,23 @@ class boolUi:
 class fileUi:
     value: str = ""
 
+
+class strReturn:
+    pass
+
+class intReturn:
+    pass
+
+class boolReturn:
+    pass
+
+class listReturn:
+    pass
+
+class fileReturn:
+    pass
+
+
 def get_return_type_name(func: callable) -> str:
     type_hints = get_type_hints(func)
     return type_hints.get('return', Any).__name__

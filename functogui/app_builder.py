@@ -19,6 +19,7 @@ class MainLayout(BoxLayout):
         super().__init__(**kwargs)
         self.function = function
         self.title = "  " + function.__name__.replace("_", " ").title()
+        self.return_type = get_return_type_name(function)
         
         self._create_properties(inspect_params(function))
         Clock.schedule_once(self.calculate_function, 0.1)
@@ -43,12 +44,10 @@ class MainLayout(BoxLayout):
             prop.value_changed_callback = lambda *_: self._schedule_calculation()
             self.ids.properties_layout.add_widget(prop)
         
-        return_type = get_return_type_name(self.function)
-        print(f"({return_type})")
-
-        self.ids.result_layout.add_widget(Label(text="Result",
-                                                size_hint_y=None,
-                                                height=dp(120)))
+        if self.return_type == "strReturn":
+            self.ids.result_layout.add_widget(Label(text="Result",
+                                                    size_hint_y=None,
+                                                    height=dp(120)))
 
         Clock.schedule_once(self._ajust_size)
     
@@ -60,7 +59,9 @@ class MainLayout(BoxLayout):
         props = {prop.name.lower().replace(" ", "_"): prop.value 
                 for prop in self.ids.properties_layout.children}
         result = self.function(**props)
-        self.ids.result_layout.children[0].text = str(result)
+
+        if self.return_type == "strReturn":
+            self.ids.result_layout.children[0].text = str(result)
     
     def _ajust_size(self, *_):
         total = 0
