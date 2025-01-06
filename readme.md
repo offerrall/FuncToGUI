@@ -2,9 +2,6 @@
 
 From function
 
-<div style="display: flex; gap: 20px;">
-<div>
-
 ```python
 from functogui import App
 from functogui.ui_types import strUi, intUi
@@ -19,50 +16,19 @@ App(hello_world)
 To...
 
 </div>
-<img src="screen.png" alt="GUI Result" width="393" height="277">
+<img src="./examples/hello.png" alt="GUI Result" width="393" height="277">
 </div>
 
 Your function becomes a GUI application - perfect for internal tools, quick testing, or prototypes. Cross-platform, real-time updates, no UI code needed. Written in less than 1000 lines.
 
+FuncToGui use Kivy for the GUI and pyler for file management.
+
 ##  Installation
-Kivy is the only dependency
+
 ```bash
 git clone https://github.com/offerrall/FuncToGUI
 cd FuncToGUI
 
-pip install .
+pip install -e .
 ```
 
-##  How simple is it?
-The entire type system is so simple, here's the complete code - this is all you need to know:
-
-```python
-@dataclass
-class strUi:
-    value: str = ""
-    min_length: int = 0
-    max_length: int = 100
-
-@dataclass
-class listUi:
-    value: str = ""
-    values: list = ""
-
-@dataclass
-class intUi:
-    value: int = 0
-    min_value: int = -1000
-    max_value: int = 1000
-
-@dataclass
-class boolUi:
-    value: bool = True
-
-@dataclass
-class fileUi:
-    value: str = ""
-
-@dataclass
-class colorUi:
-    value: str = ""
-```

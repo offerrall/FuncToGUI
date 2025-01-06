@@ -7,4 +7,8 @@ setup(
     package_data={
         'functogui': ['*.kv'],
     },
+    install_requires=[
+        'kivy',
+        'pyler',
+    ],
 )
