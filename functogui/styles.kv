@@ -76,7 +76,6 @@
 <MainLayout>:
     orientation: 'vertical'
     padding: dp(10)
-    spacing: dp(10)
 
     canvas.before:
         Color:
@@ -101,17 +100,17 @@
     BoxLayout:
         id: properties_layout_container
         orientation: 'vertical'
-        spacing: dp(10)
         size_hint_y: None
         height: self.minimum_height
         
         Label:
-            text: 'Properties' + ' ' * 2
+            text: ' ' * 2 + 'Properties'
             font_size: '16sp'
             size_hint_y: None
-            height: dp(15)
             color: label_secundary_color
-            halign: 'right'
+            height: dp(15)
+            halign: 'left'
+            valign: 'middle'
             text_size: self.size
 
         BoxLayout:
@@ -131,15 +130,15 @@
 
     BoxLayout:
         orientation: 'vertical'
-        spacing: dp(10)
         
         Label:
-            text: 'Result' + ' ' * 2
+            text: ' ' * 2 + 'Result'
             font_size: '16sp'
+            color: label_secundary_color
             size_hint_y: None
             height: dp(15)
-            color: label_secundary_color
-            halign: 'right'
+            halign: 'left'
+            valign: 'middle'
             text_size: self.size
         
         BoxLayout:
