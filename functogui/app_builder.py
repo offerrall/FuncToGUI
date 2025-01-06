@@ -46,7 +46,9 @@ class MainLayout(BoxLayout):
         return_type = get_return_type_name(self.function)
         print(f"({return_type})")
 
-        self.ids.result_layout.add_widget(Label(text="Result", size_hint_y=None, height=dp(500)))
+        self.ids.result_layout.add_widget(Label(text="Result",
+                                                size_hint_y=None,
+                                                height=dp(120)))
 
         Clock.schedule_once(self._ajust_size)
     
