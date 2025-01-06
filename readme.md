@@ -1,6 +1,6 @@
 # FuncToGUI
 
-From function to GUI:
+From function
 
 <div style="display: flex; gap: 20px;">
 <div>
