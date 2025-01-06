@@ -27,7 +27,6 @@ class boolUi:
 class fileUi:
     value: str = ""
 
-
 class strReturn:
     pass
 
@@ -35,9 +34,6 @@ class intReturn:
     pass
 
 class boolReturn:
-    pass
-
-class listReturn:
     pass
 
 class fileReturn:
