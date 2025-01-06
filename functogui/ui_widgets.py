@@ -136,3 +136,10 @@ class CustomFileProperty(CustomProperty):
 
 class StrReturn(BoxLayout):
     text = StringProperty("")
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def copy_text(self):
+        from kivy.core.clipboard import Clipboard
+        Clipboard.copy(self.text)
