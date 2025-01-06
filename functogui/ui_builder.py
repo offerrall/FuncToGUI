@@ -29,7 +29,8 @@ class MainLayout(BoxLayout):
             "strUi": CustomStrProperty,
             "intUi": CustomIntProperty,
             "boolUi": CustomBoolProperty,
-            "listUi": CustomListProperty
+            "listUi": CustomListProperty,
+            "fileUi": CustomFileProperty
         }
         
         for prop_name, prop_info in properties.items():

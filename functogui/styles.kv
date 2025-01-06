@@ -67,6 +67,12 @@
         values: root.values
         on_text: root.set_property_value(self.text)
 
+<CustomFileProperty>:
+    Button:
+        id: file_button
+        text: ""
+        on_press: root.open_file_dialog()
+
 <MainLayout>:
     orientation: 'vertical'
     padding: dp(10)

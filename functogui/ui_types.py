@@ -22,6 +22,10 @@ class intUi:
 class boolUi:
     value: bool = True
 
+@dataclass
+class fileUi:
+    value: str = ""
+
 def inspect_params(func: callable) -> dict:
     params_info = {}
     
