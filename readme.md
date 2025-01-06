@@ -25,6 +25,7 @@ To...
 Your function becomes a GUI application - perfect for internal tools, quick testing, or prototypes. Cross-platform, real-time updates, no UI code needed. Written in less than 1000 lines.
 
 ##  Installation
+Kivy is the only dependency
 ```bash
 git clone https://github.com/offerrall/FuncToGUI
 cd FuncToGUI
