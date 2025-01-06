@@ -26,6 +26,10 @@ class boolUi:
 class fileUi:
     value: str = ""
 
+@dataclass
+class colorUi:
+    value: str = ""
+
 def inspect_params(func: callable) -> dict:
     params_info = {}
     

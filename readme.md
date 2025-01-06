@@ -24,6 +24,13 @@ To...
 
 Your function becomes a GUI application - perfect for internal tools, quick testing, or prototypes. Cross-platform, real-time updates, no UI code needed. Written in less than 1000 lines.
 
+##  Installation
+```bash
+git clone https://github.com/offerrall/FuncToGUI
+cd FuncToGUI
+
+pip install .
+```
 
 ##  How simple is it?
 The entire type system is so simple, here's the complete code - this is all you need to know:
@@ -52,5 +59,9 @@ class boolUi:
 
 @dataclass
 class fileUi:
+    value: str = ""
+
+@dataclass
+class colorUi:
     value: str = ""
 ```
