@@ -10,6 +10,8 @@ from .ui_types import inspect_params, get_return_type_name
 from .ui_widgets import *
 
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
+simple_types = ["strReturn", "intReturn", "boolReturn"]
+all_types = simple_types + ["fileReturn"]
 
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
@@ -19,6 +21,8 @@ class MainLayout(BoxLayout):
         self.function = function
         self.title = "  " + function.__name__.replace("_", " ").title()
         self.return_type = get_return_type_name(function)
+        if self.return_type not in all_types:
+            raise TypeError(f"Return type must be one of {all_types}")
         
         self._create_properties(inspect_params(function))
         Clock.schedule_once(self.calculate_function, 0.1)
@@ -43,22 +47,25 @@ class MainLayout(BoxLayout):
             prop.value_changed_callback = lambda *_: self._schedule_calculation()
             self.ids.properties_layout.add_widget(prop)
         
-        if self.return_type == "strReturn":
-            self.ids.result_layout.add_widget(StrReturn())
+        for type in simple_types:
+            if self.return_type == type:
+                self.ids.result_layout.add_widget(StrReturn())
 
         Clock.schedule_once(self._ajust_size)
     
     def _schedule_calculation(self):
         Clock.unschedule(self.calculate_function)
-        Clock.schedule_once(self.calculate_function, 0.1)
+        Clock.schedule_once(self.calculate_function, 0.03)
 
     def calculate_function(self, *_):
         props = {prop.name.lower().replace(" ", "_"): prop.value 
                 for prop in self.ids.properties_layout.children}
         result = self.function(**props)
 
-        if self.return_type == "strReturn":
-            self.ids.result_layout.children[0].text = str(result)
+        for type in simple_types:
+            if self.return_type == type:
+                self.ids.result_layout.children[0].text = str(result)
+        
     
     def _ajust_size(self, *_):
         total = 0
