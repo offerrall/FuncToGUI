@@ -73,6 +73,25 @@
         text: ""
         on_press: root.open_file_dialog()
 
+<StrReturn>:
+    size_hint_y: None
+    height: dp(120)
+    orientation: 'vertical'
+    padding: dp(10)
+    
+    Label:
+        text: root.text
+        font_size: '15sp'
+        color: label_secundary_color
+        halign: 'center'
+        valign: 'middle'
+        text_size: self.size
+    
+    Button:
+        text: 'Copy'
+        size_hint_y: None
+        height: dp(30)
+
 <MainLayout>:
     orientation: 'vertical'
     padding: dp(10)

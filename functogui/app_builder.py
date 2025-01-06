@@ -1,6 +1,5 @@
 from kivy.app import App as KivyApp
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.metrics import dp
@@ -45,9 +44,7 @@ class MainLayout(BoxLayout):
             self.ids.properties_layout.add_widget(prop)
         
         if self.return_type == "strReturn":
-            self.ids.result_layout.add_widget(Label(text="Result",
-                                                    size_hint_y=None,
-                                                    height=dp(120)))
+            self.ids.result_layout.add_widget(StrReturn())
 
         Clock.schedule_once(self._ajust_size)
     

@@ -133,3 +133,6 @@ class CustomFileProperty(CustomProperty):
 
             if self.value_changed_callback:
                 self.value_changed_callback()
+
+class StrReturn(BoxLayout):
+    text = StringProperty("")

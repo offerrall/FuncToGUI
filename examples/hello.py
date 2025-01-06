@@ -5,6 +5,6 @@ def hello_world(name: str = strUi(value="World"),
                 times: int = intUi(value=3, min_value=1, max_value=10)
                 ) -> strReturn:
     
-    return f"Hello {name}\n" * times
+    return f"Hello {name}! " * times
 
 App(hello_world)
