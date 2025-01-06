@@ -22,3 +22,33 @@ App(hello_world)
 
 Your function becomes a GUI application - perfect for internal tools, quick testing, or prototypes. Cross-platform, real-time updates, no UI code needed. Written in less than 1000 lines.
 
+
+##  How simple is it?
+The entire type system is so simple, here's the complete code - this is all you need to know:
+
+```python
+@dataclass
+class strUi:
+    value: str = ""
+    min_length: int = 0
+    max_length: int = 100
+
+@dataclass
+class listUi:
+    value: str = ""
+    values: list = ""
+
+@dataclass
+class intUi:
+    value: int = 0
+    min_value: int = -1000
+    max_value: int = 1000
+
+@dataclass
+class boolUi:
+    value: bool = True
+
+@dataclass
+class fileUi:
+    value: str = ""
+```
