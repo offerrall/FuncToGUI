@@ -3,39 +3,25 @@ import inspect
 
 @dataclass
 class strUi:
-    """UI hints for string parameters"""
     value: str = ""
     min_length: int = 0
     max_length: int = 100
 
 @dataclass
 class listUi:
-    """UI hints for list parameters"""
     value: list = ""
 
 @dataclass
 class intUi:
-    """UI hints for int parameters"""
     value: int = 0
     min_value: int = -1000
     max_value: int = 1000
 
 @dataclass
 class boolUi:
-    """UI hints for bool parameters"""
     value: bool = True
 
-def inspect_params(func):
-    """Inspect the parameters of a function and return a dictionary with information about each parameter.
-    Each parameter is represented by a dictionary with the following keys:
-
-    - type: The type hint of the parameter
-    - default_class: The class of the default value
-    - constructor_values: The values used to create the default value
-    - default_params: A dictionary with information about the parameters of the default value
-        - type: The type hint of the parameter
-        - default: The default value of the parameter
-    """
+def inspect_params(func: callable) -> dict:
     params_info = {}
     
     for name, param in inspect.signature(func).parameters.items():
