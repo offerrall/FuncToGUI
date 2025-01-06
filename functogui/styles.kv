@@ -65,8 +65,6 @@
         id: list_spinner
         text: ""
         values: root.values
-        background_color: [0, 0, 0, 0.5]
-        foreground_color: [1, 1, 1, 1]
         on_text: root.set_property_value(self.text)
 
 <MainLayout>:
@@ -148,4 +146,3 @@
                 Line:
                     rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
                     width: dp(1)
-            

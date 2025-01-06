@@ -26,10 +26,10 @@ class MainLayout(BoxLayout):
     
     def _create_properties(self, properties):
         PROPERTY_TYPES = {
-            "int": CustomIntProperty,
-            "str": CustomStrProperty,
-            "bool": CustomBoolProperty,
-            "list": CustomListProperty
+            "strUi": CustomStrProperty,
+            "intUi": CustomIntProperty,
+            "boolUi": CustomBoolProperty,
+            "listUi": CustomListProperty
         }
         
         for prop_name, prop_info in properties.items():
@@ -39,7 +39,7 @@ class MainLayout(BoxLayout):
                 **prop_info["constructor_values"]
             }
             
-            prop = PROPERTY_TYPES[prop_info["type"]](**values)
+            prop = PROPERTY_TYPES[prop_info["default_class"]](**values)
             prop.value_changed_callback = lambda *_: self._schedule_calculation()
             self.ids.properties_layout.add_widget(prop)
     
