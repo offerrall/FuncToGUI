@@ -8,7 +8,7 @@ from kivy.clock import Clock
 from pathlib import Path
 
 from .ui_types import inspect_params
-from .kivy_properties import *
+from .ui_widgets import *
 
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
 WINDOW_WIDTH = dp(400)

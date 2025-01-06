@@ -1,2 +1,2 @@
-from .kivy_properties import *
-from .kivy_builder import App
+from .ui_widgets import *
+from .app_builder import App
