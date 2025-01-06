@@ -1,4 +1,4 @@
-from functogui.ui_types import intUi, strUi, boolUi, listUi, fileUi, inspect_params
+from functogui.ui_types import intUi, strUi, boolUi, listUi, fileUi
 from functogui import App
 
 
