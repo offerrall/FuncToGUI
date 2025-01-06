@@ -28,7 +28,8 @@ class MainLayout(BoxLayout):
         PROPERTY_TYPES = {
             "int": CustomIntProperty,
             "str": CustomStrProperty,
-            "bool": CustomBoolProperty
+            "bool": CustomBoolProperty,
+            "list": CustomListProperty
         }
         
         for prop_name, prop_info in properties.items():

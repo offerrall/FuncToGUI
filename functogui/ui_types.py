@@ -9,7 +9,8 @@ class strUi:
 
 @dataclass
 class listUi:
-    value: list = ""
+    value: str = ""
+    values: list = ""
 
 @dataclass
 class intUi:

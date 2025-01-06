@@ -1,4 +1,4 @@
-from kivy.properties import NumericProperty, StringProperty, ObjectProperty
+from kivy.properties import NumericProperty, StringProperty, ObjectProperty, BooleanProperty, ListProperty
 from kivy.uix.boxlayout import BoxLayout
 
 
@@ -62,7 +62,7 @@ class CustomIntProperty(CustomProperty):
             pass
 
 class CustomBoolProperty(CustomProperty):
-    value = ObjectProperty(True)
+    value = BooleanProperty(False)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -73,6 +73,23 @@ class CustomBoolProperty(CustomProperty):
     def set_property_value(self, value):
         self.value = value
         self.ids.bool_switch.active = value
+
+        if self.value_changed_callback:
+            self.value_changed_callback()
+
+class CustomListProperty(CustomProperty):
+    value = StringProperty("")
+    values = ListProperty([])
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+    
+    def on_kv_post(self, base_widget):
+        self.ids.list_spinner.text = self.value
+    
+    def set_property_value(self, value):
+        self.value = value
+        self.ids.list_spinner.text = str(value)
 
         if self.value_changed_callback:
             self.value_changed_callback()
