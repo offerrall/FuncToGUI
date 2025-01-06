@@ -11,7 +11,7 @@ FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://githu
 
 ## Key Features
 - **Function-to-GUI Transformation**: Turn your function parameters into a GUI interface with minimal setup.
-- **No Complex Configuration**: Just define your function with the desired [`ui_types`](./functogui/ui_types) and let FuncToGUI generate the window.
+- **No Complex Configuration**: Just define your function with the desired [`ui_types`](./functogui/ui_types.py) and let FuncToGUI generate the window.
 - **Supports Various Parameter Types**:
   - `intUi` 
   - `boolUi`
