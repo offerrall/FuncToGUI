@@ -72,6 +72,7 @@ The examples folder contains all the examples you need to understand how to use 
 - [ ] More return types (plotReturn, jsonReturn, etc.)
 - [ ] Enhanced validation options
 - [ ] Custom themes and styling through App class
+- [ ] Improved error handling
 
 ### UI Improvements
 - [ ] Better control widgets
