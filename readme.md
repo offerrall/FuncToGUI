@@ -7,6 +7,16 @@ Perfect for internal tools, quick testing, or prototypes. FuncToGUI is cross-pla
 
 FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://github.com/kivy/plyer) for file handling.
 
+## Quick Start
+```python
+from functogui import App, intUi, boolReturn
+
+def is_even(number: int = intUi(4)) -> boolReturn:
+    return number % 2 == 0
+
+App(is_even)
+```
+
 ## Key Features
 - **Function-to-GUI Transformation**: Turn your function parameters into a GUI interface with minimal setup.
 - **No Complex Configuration**: Just define your function with the desired [`ui_types`](./functogui/ui_types.py) and let FuncToGUI generate the window.
@@ -22,11 +32,6 @@ FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://githu
     - `imageFileReturn`
 - **Easily Extensible**: You can create your own UI types if you need something more specific.
 
-## Future Features
-- **Support for more return and parameter types**
-- **Support for more customization options**
-- **Better control widgets**
-
 ##  Installation
 ```bash
 git clone https://github.com/offerrall/FuncToGUI
@@ -34,6 +39,7 @@ cd FuncToGUI
 
 pip install -e .
 ```
+
 ## Examples
 - [Examples](./examples)
 
@@ -58,3 +64,25 @@ The examples folder contains all the examples you need to understand how to use 
 
 **`functogui.styles`**
 - Contains all the styles for the GUI
+
+## Roadmap 
+
+### Core Features
+- [ ] More parameter types (dateUi, colorUi, etc.)
+- [ ] More return types (plotReturn, jsonReturn, etc.)
+- [ ] Enhanced validation options
+- [ ] Custom themes and styling through App class
+
+### UI Improvements
+- [ ] Better control widgets
+- [ ] Responsive layouts
+- [ ] Customizable themes
+
+### Platform Support
+- [ ] iOS compatibility testing
+- [ ] Android compatibility testing
+- [ ] Cross-platform improvements
+
+
+## Discord
+Join the [Discord](https://discord.gg/4yUxMCK3) server to discuss the project, ask questions, or suggest new features.

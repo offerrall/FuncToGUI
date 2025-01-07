@@ -1,10 +1,9 @@
-from functogui import App
-from functogui.ui_types import intUi, boolUi, fileUi, imageFileReturn
+from functogui import App, intUi, boolUi, fileUi, imageFileReturn
 from PIL import Image, ImageEnhance
 
 def process_image(image_path: str = fileUi(),
-                  brightness: int = intUi(value=100, min_value=0, max_value=200),
-                  rotate: int = intUi(value=0, min_value=0, max_value=360),
+                  brightness: int = intUi(100, max_value=200),
+                  rotate: int = intUi(max_value=360),
                   flip: bool = boolUi(False)
                   ) -> imageFileReturn:
 

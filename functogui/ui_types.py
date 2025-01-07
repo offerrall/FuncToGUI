@@ -16,7 +16,7 @@ class listUi:
 @dataclass
 class intUi:
     value: int = 0
-    min_value: int = -1000
+    min_value: int = 0
     max_value: int = 1000
 
 @dataclass
