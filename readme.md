@@ -1,5 +1,5 @@
 </div>
-<img src="./examples/example.jpg">
+<img src="./examples/example.png">
 </div>
 
 **Easily turn your Python functions into GUI applications.**  
