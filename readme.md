@@ -8,7 +8,7 @@ Perfect for internal tools, quick testing, or prototypes. FuncToGUI is cross-pla
 FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://github.com/kivy/plyer) for file handling.
 
 ## Quick Start
-Normal function:
+Normal function (no data limits):
 ```python
 from functogui import App
 
@@ -18,7 +18,7 @@ def is_even(number: int = 4) -> bool:
 App(is_even)
 ```
 
-Function with UI types:
+Function with UI types (limits the input data):
 ```python
 from functogui import App, intUi, intReturn
 from typing import Annotated
