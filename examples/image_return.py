@@ -1,11 +1,13 @@
-from functogui import App, intUi, boolUi, fileUi, imageFileReturn
+from functogui import App, intUi, fileUi, imageFileReturn
+from typing import Annotated
 from PIL import Image, ImageEnhance
 
-def process_image(image_path: str = fileUi(),
-                  brightness: int = intUi(100, max_value=200),
-                  rotate: int = intUi(max_value=360),
-                  flip: bool = boolUi(False)
-                  ) -> imageFileReturn:
+
+def process_image(image_path: Annotated[str, fileUi] = "",
+                  brightness: Annotated[int, intUi(100, max_value=200)] = 100,
+                  rotate: Annotated[int, intUi(max_value=360)] = 0,
+                  flip: bool = False
+                  ) -> Annotated[str, imageFileReturn]:
 
     if not image_path:
         return ""

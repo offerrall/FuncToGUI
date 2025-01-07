@@ -1,6 +1,6 @@
-from functogui import App, intUi, boolUi, boolReturn
+from functogui import App
 
-def check_even_number(number: int = intUi(4, max_value=100)) -> boolReturn:
+def check_even_number(number: int = 4) -> bool:
     return number % 2 == 0
 
 App(check_even_number)

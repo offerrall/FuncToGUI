@@ -6,30 +6,21 @@ from kivy.metrics import dp
 from kivy.clock import Clock
 from pathlib import Path
 
-from .ui_types import inspect_params, get_return_type_name
+from .inspect_fuction import inspect_params, get_return_type_name
 from .ui_widgets import *
 
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
-simple_types = ["strReturn", "intReturn", "boolReturn"]
-all_types = simple_types + ["imageFileReturn"]
 
 class MainLayout(BoxLayout):
-    """
-    Main layout of the app. Contains the properties and the result of the function.
-    """
     title = StringProperty("Function GUI")
     
-    def __init__(self,
-                 function,
-                 width: int = 350,
-                 **kwargs):
+    def __init__(self, function, width: int = 350, **kwargs):
         super().__init__(**kwargs)
         self.function = function
         self.user_max_width = width
         self.title = "  " + function.__name__.replace("_", " ").title()
         self.return_type = get_return_type_name(function)
-        if self.return_type not in all_types:
-            raise TypeError(f"Return type must be one of {all_types}")
+        self.basic_return_types = ["strReturn", "intReturn", "boolReturn"]
         
         self._create_properties(inspect_params(function))
         Clock.schedule_once(self.calculate_function, 0.1)
@@ -42,7 +33,7 @@ class MainLayout(BoxLayout):
                 for prop in self.ids.properties_layout.children}
         result = self.function(**props)
 
-        for type in simple_types:
+        for type in self.basic_return_types:
             if self.return_type == type:
                 self.ids.result_layout.children[0].text = str(result)
         
@@ -51,9 +42,6 @@ class MainLayout(BoxLayout):
             self.ids.result_layout.children[0].ids.image.reload()
 
     def _create_properties(self, properties):
-        """
-        Create the properties widgets based on the function parameters.
-        """
         PROPERTY_TYPES = {
             "strUi": CustomStrProperty,
             "intUi": CustomIntProperty,
@@ -65,15 +53,15 @@ class MainLayout(BoxLayout):
         for prop_name, prop_info in properties.items():
             values = {
                 "name": prop_name.replace("_", " ").title(),
-                **{k: v["default"] for k, v in prop_info["default_params"].items()},
-                **prop_info["constructor_values"]
+                "value": prop_info["default"],
+                **prop_info["options"]
             }
             
-            prop = PROPERTY_TYPES[prop_info["default_class"]](**values)
+            prop = PROPERTY_TYPES[prop_info["ui_type"]](**values)
             prop.value_changed_callback = lambda *_: self._schedule_calculation()
             self.ids.properties_layout.add_widget(prop)
         
-        for type in simple_types:
+        for type in self.basic_return_types:
             if self.return_type == type:
                 self.ids.result_layout.add_widget(StrReturn())
         

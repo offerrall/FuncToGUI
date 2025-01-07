@@ -1,8 +1,9 @@
 from functogui import App, strUi, intUi, strReturn
+from typing import Annotated
 
-def hello_world(name: str = strUi("World", max_length=10, min_length=1),
-                times: int = intUi(3, min_value=1, max_value=10)
-                ) -> strReturn:
+def hello_world(name: Annotated[str, strUi(max_length=10, min_length=1)] = "World",
+                times: Annotated[int, intUi(min_value=1, max_value=10)] = 3
+                ) -> str:
     
     return f"Hello {name}! " * times
 
