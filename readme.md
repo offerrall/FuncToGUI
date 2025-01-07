@@ -1,5 +1,3 @@
-# FuncToGUI
-
 </div>
 <img src="./examples/example.jpg">
 </div>
