@@ -1,10 +1,11 @@
-from functogui import App, intUi, strUi, floatUi, listUi, fileUi, imageFileReturn
+from functogui import App, intUi, strUi, floatUi, listUi, fileUi, imageFileReturn, folderUi
 from typing import Annotated
 from PIL import Image, ImageEnhance, ImageFilter, ImageDraw
 
 EFFECTS = ["None", "Blur", "Contour", "Edge Enhance", "Sharpen"]
 
 def all_types_test(image_path: Annotated[str, fileUi] = "",
+                   folder_path: Annotated[str, folderUi] = "",
                    brightness: Annotated[float, floatUi(min_value=0.0, max_value=2.0)] = 1.0,
                    rotation: Annotated[int, intUi(min_value=0, max_value=360)] = 0,
                    watermark: Annotated[str, strUi(min_length=0, max_length=20)] = "",
@@ -12,6 +13,9 @@ def all_types_test(image_path: Annotated[str, fileUi] = "",
                    color: tuple[int, int, int, int] = (255, 0, 0, 125),
                    grayscale: bool = False
                    ) -> Annotated[str, imageFileReturn]:
+    
+    print(f"folder_path: {folder_path}")
+
     if not image_path:
         return ""
 
