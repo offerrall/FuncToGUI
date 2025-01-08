@@ -35,6 +35,10 @@ class colorUi:
 class fileUi:
     value: str = ""
 
+@dataclass
+class folderUi:
+    value: str = ""
+
 class strReturn:
     pass
 

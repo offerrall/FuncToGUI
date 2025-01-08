@@ -1,11 +1,11 @@
-from functogui.ui_types import intUi, strUi, fileUi, listUi, boolUi, floatUi, colorUi
+from functogui.ui_types import intUi, strUi, fileUi, listUi, boolUi, floatUi, colorUi, folderUi
 from typing import Any, get_type_hints
 
 import inspect
 
 primite_types_allowed = ["int", "str", "bool", "float", "tuple"]
 
-ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi"]
+ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi"]
 
 map_primitive_ui = {"int": intUi,
                     "str": strUi,

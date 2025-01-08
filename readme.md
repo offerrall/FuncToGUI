@@ -41,6 +41,7 @@ App(time_to_seconds)
   - `strUi`
   - `floatUi`
   - `fileUi`
+  - `folderUi`
   - `colorUi`
 - **Supports Various Return Types**:
     - `boolReturn`
@@ -94,6 +95,7 @@ This library is designed to be as simple as possible. You only need look at the 
 - [ ] Custom themes and styling through App class
 - [ ] Improved error handling
 - [ ] Better control widgets (sliders, dropdowns, etc.)
+- [ ] Better return widgets (images, plots, etc.)
 
 ### Platform Support
 - [ ] iOS compatibility testing

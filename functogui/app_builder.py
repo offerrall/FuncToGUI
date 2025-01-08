@@ -50,7 +50,8 @@ class MainLayout(BoxLayout):
             "listUi": CustomListProperty,
             "fileUi": CustomFileProperty,
             "floatUi": CustomFloatProperty,
-            "colorUi": CustomColorProperty
+            "colorUi": CustomColorProperty,
+            "folderUi": CustomFolderProperty
         }
         
         for prop_name, prop_info in properties.items():
