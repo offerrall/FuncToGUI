@@ -10,6 +10,7 @@ from .inspect_fuction import inspect_params, get_return_type_name
 from .ui_widgets import *
 
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
+basic_return_types = ["strReturn", "intReturn", "boolReturn", "floatReturn"]
 
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
@@ -20,7 +21,7 @@ class MainLayout(BoxLayout):
         self.user_max_width = width
         self.title = "  " + function.__name__.replace("_", " ").title()
         self.return_type = get_return_type_name(function)
-        self.basic_return_types = ["strReturn", "intReturn", "boolReturn"]
+        self.basic_return_types = basic_return_types
         
         self._create_properties(inspect_params(function))
         Clock.schedule_once(self.calculate_function, 0.1)
@@ -47,7 +48,8 @@ class MainLayout(BoxLayout):
             "intUi": CustomIntProperty,
             "boolUi": CustomBoolProperty,
             "listUi": CustomListProperty,
-            "fileUi": CustomFileProperty
+            "fileUi": CustomFileProperty,
+            "floatUi": CustomFloatProperty,
         }
         
         for prop_name, prop_info in properties.items():

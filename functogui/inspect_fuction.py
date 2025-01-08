@@ -1,17 +1,22 @@
-from functogui.ui_types import intUi, strUi, fileUi, listUi, boolUi
+from functogui.ui_types import intUi, strUi, fileUi, listUi, boolUi, floatUi
 from typing import Any, get_type_hints
 
 import inspect
 
-primite_types_allowed = ["int", "str", "bool"]
-ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi"]
+primite_types_allowed = ["int", "str", "bool", "float"]
+
+ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi"]
+
 map_primitive_ui = {"int": intUi,
                     "str": strUi,
-                    "bool": boolUi
+                    "bool": boolUi,
+                    "float": floatUi,
                     }
+
 map_return_ui = {"int": "intReturn",
                  "str": "strReturn",
                  "bool": "boolReturn",
+                 "float": "floatReturn",
                  }
 
 def get_return_type_name(func: callable) -> str:

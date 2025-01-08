@@ -38,6 +38,15 @@
             size_hint_x: 0.3
             on_text: root.set_property_value(self.text)
 
+<CustomFloatProperty>:
+    BoxLayout:
+        orientation: 'horizontal'
+        
+        TextInput:
+            id: float_textinput
+            input_filter: 'float'
+            on_text: root.set_property_value(self.text)
+
 <CustomStrProperty>:
     TextInput:
         id: str_textinput

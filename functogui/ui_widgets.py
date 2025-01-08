@@ -62,6 +62,36 @@ class CustomIntProperty(CustomProperty):
         except ValueError:
             pass
 
+class CustomFloatProperty(CustomProperty):
+    value = NumericProperty(0.0)
+    min_value = NumericProperty(0.0)
+    max_value = NumericProperty(0.0)
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def on_kv_post(self, base_widget):
+        self.ids.float_textinput.text = str(self.value)
+
+    def set_property_value(self, value):
+        try:
+            if value == "":
+                return
+
+            value = float(value)
+            if value < self.min_value:
+                value = self.min_value
+            if value > self.max_value:
+                value = self.max_value
+            
+            self.ids.float_textinput.text = str(value)
+            self.value = value
+
+            if self.value_changed_callback:
+                self.value_changed_callback()
+        except ValueError:
+            pass
+
 class CustomBoolProperty(CustomProperty):
     value = BooleanProperty(False)
 

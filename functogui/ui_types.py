@@ -18,6 +18,12 @@ class intUi:
     max_value: int = 1000
 
 @dataclass
+class floatUi:
+    value: float = 0.0
+    min_value: float = 0.0
+    max_value: float = 1000.0
+
+@dataclass
 class boolUi:
     value: bool = True
 
@@ -32,6 +38,9 @@ class intReturn:
     pass
 
 class boolReturn:
+    pass
+
+class floatReturn:
     pass
 
 class imageFileReturn:

@@ -39,11 +39,13 @@ App(time_to_seconds)
   - `intUi` 
   - `boolUi`
   - `strUi`
+  - `floatUi`
   - `fileUi`
 - **Supports Various Return Types**:
     - `boolReturn`
     - `intReturn`
     - `strReturn`
+    - `floatReturn`
     - `imageFileReturn`
 - **Easily Extensible**: You can create your own UI types if you need something more specific.
 
@@ -88,20 +90,25 @@ This library is designed to be as simple as possible. You only need look at the 
 ### Core Features
 - [ ] More parameter types (dateUi, colorUi, etc.)
 - [ ] More return types (plotReturn, jsonReturn, etc.)
-- [ ] Enhanced validation options
 - [ ] Custom themes and styling through App class
 - [ ] Improved error handling
-
-### UI Improvements
-- [ ] Better control widgets
-- [ ] Responsive layouts
-- [ ] Customizable themes
+- [ ] Better control widgets (sliders, dropdowns, etc.)
 
 ### Platform Support
 - [ ] iOS compatibility testing
 - [ ] Android compatibility testing
-- [ ] Cross-platform improvements
+- [ ] MacOS compatibility testing
+- [X] Windows compatibility testing
+- [ ] Linux compatibility testing
 
 
-## Discord
-Join the [Discord](https://discord.gg/4yUxMCK3) server to discuss the project, ask questions, or suggest new features.
+## Community & Contributing
+Join our Discord community to:
+
+- Discuss the project
+- Get help and ask questions
+- Share ideas and suggestions
+- Contribute to development
+- Connect with other users
+
+We welcome contributions! Whether you want to fix bugs, add features, or improve documentation - hop into Discord and let's collaborate.
