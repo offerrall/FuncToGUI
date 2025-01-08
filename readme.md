@@ -39,6 +39,7 @@ App(time_to_seconds)
   - `intUi` 
   - `boolUi`
   - `strUi`
+  - `listUi`
   - `floatUi`
   - `fileUi`
   - `folderUi`
