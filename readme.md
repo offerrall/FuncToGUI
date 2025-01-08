@@ -104,7 +104,7 @@ This library is designed to be as simple as possible. You only need look at the 
 
 
 ## Community & Contributing
-Join our Discord community to:
+Join our Discord community to: [Discord](https://discord.gg/4yUxMCK3)
 
 - Discuss the project
 - Get help and ask questions
