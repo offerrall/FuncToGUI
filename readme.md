@@ -41,6 +41,7 @@ App(time_to_seconds)
   - `strUi`
   - `floatUi`
   - `fileUi`
+  - `colorUi`
 - **Supports Various Return Types**:
     - `boolReturn`
     - `intReturn`
@@ -88,7 +89,7 @@ This library is designed to be as simple as possible. You only need look at the 
 ## Roadmap 
 
 ### Core Features
-- [ ] More parameter types (dateUi, colorUi, etc.)
+- [ ] More parameter types (dateUi, timeUi, etc.)
 - [ ] More return types (plotReturn, jsonReturn, etc.)
 - [ ] Custom themes and styling through App class
 - [ ] Improved error handling

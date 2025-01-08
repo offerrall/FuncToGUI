@@ -69,6 +69,18 @@
             width: dp(82)
             on_active: root.set_property_value(self.active)
 
+<CustomColorProperty>:
+    
+    Widget:
+        id: color_widget
+        canvas.before:
+            Color:
+                rgba: root.color
+            RoundedRectangle: 
+                size: self.size
+                pos: self.pos
+                radius: [dp(5), dp(5), dp(5), dp(5)]
+
 <CustomListProperty>:
     Spinner:
         id: list_spinner

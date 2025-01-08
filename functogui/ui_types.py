@@ -28,6 +28,10 @@ class boolUi:
     value: bool = True
 
 @dataclass
+class colorUi:
+    value: tuple[int, int, int, int] = (0, 0, 0, 255)
+
+@dataclass
 class fileUi:
     value: str = ""
 

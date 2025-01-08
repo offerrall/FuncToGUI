@@ -1,16 +1,17 @@
-from functogui.ui_types import intUi, strUi, fileUi, listUi, boolUi, floatUi
+from functogui.ui_types import intUi, strUi, fileUi, listUi, boolUi, floatUi, colorUi
 from typing import Any, get_type_hints
 
 import inspect
 
-primite_types_allowed = ["int", "str", "bool", "float"]
+primite_types_allowed = ["int", "str", "bool", "float", "tuple"]
 
-ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi"]
+ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi"]
 
 map_primitive_ui = {"int": intUi,
                     "str": strUi,
                     "bool": boolUi,
                     "float": floatUi,
+                    "tuple": colorUi,
                     }
 
 map_return_ui = {"int": "intReturn",
@@ -73,6 +74,26 @@ def inspect_params(func):
 
         if not "_AnnotatedAlias" in type(annotation).__name__:
             type_primitive = annotation.__name__
+
+            if not type_primitive in primite_types_allowed:
+                raise ValueError(f"Parameter {name} has an invalid type hint '{type_primitive}'")
+
+            if type_primitive == "tuple":
+                is_color4_tuple = True
+
+                try: # Tuple can fail if is empty
+                    if not len(annotation.__args__) == 4:
+                        is_color4_tuple = False
+                    for arg in annotation.__args__:
+                        if not arg.__name__ == "int":
+                            is_color4_tuple = False
+                            break
+                except:
+                    is_color4_tuple = False
+                
+                if not is_color4_tuple:
+                    raise ValueError(f"Tuple only supports 4 int values for colorUI, not for any other type, like this: tuple[int, int, int, int]")
+
             ui_type = map_primitive_ui[type_primitive]
 
             default_ui = ui_type()
