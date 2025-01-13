@@ -19,9 +19,7 @@ class MainLayout(BoxLayout):
         super().__init__(**kwargs)
         self.function = function
         self.user_max_width = width
-        self.title = "  " + function.__name__.replace("_", " ").title()
         self.return_type = get_return_type_name(function)
-        self.basic_return_types = basic_return_types
         
         self._create_properties(inspect_params(function))
         Clock.schedule_once(self.calculate_function, 0.1)
@@ -34,7 +32,7 @@ class MainLayout(BoxLayout):
                 for prop in self.ids.properties_layout.children}
         result = self.function(**props)
 
-        for type in self.basic_return_types:
+        for type in basic_return_types:
             if self.return_type == type:
                 self.ids.result_layout.children[0].text = str(result)
         
@@ -65,7 +63,7 @@ class MainLayout(BoxLayout):
             prop.value_changed_callback = lambda *_: self._schedule_calculation()
             self.ids.properties_layout.add_widget(prop)
         
-        for type in self.basic_return_types:
+        for type in basic_return_types:
             if self.return_type == type:
                 self.ids.result_layout.add_widget(StrReturn())
         
@@ -107,11 +105,12 @@ class App(KivyApp):
         super().__init__(**kwargs)
         self.function = function
         self.user_max_width = width
+        self.title = "  " + function.__name__.replace("_", " ").title()
         self.run()
 
     def build(self):
         """
         Create the main layout of the app.
         """
-        main_layout = MainLayout(self.function, width=self.user_max_width)
+        main_layout = MainLayout(self.function, width=self.user_max_width, title=self.title)
         return main_layout
