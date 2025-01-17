@@ -16,6 +16,9 @@ class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
     
     def __init__(self, function, width: int = 350, **kwargs):
+        """
+        Create the main layout of the app with the properties and result widgets.
+        """
         super().__init__(**kwargs)
         self.function = function
         self.user_max_width = width
@@ -41,6 +44,9 @@ class MainLayout(BoxLayout):
             self.ids.result_layout.children[0].ids.image.reload()
 
     def _create_properties(self, properties):
+        """
+        Create the properties widgets based on the function parameters.
+        """
         PROPERTY_TYPES = {
             "strUi": CustomStrProperty,
             "intUi": CustomIntProperty,
@@ -60,7 +66,7 @@ class MainLayout(BoxLayout):
             }
             
             prop = PROPERTY_TYPES[prop_info["ui_type"]](**values)
-            prop.value_changed_callback = lambda *_: self._schedule_calculation()
+            prop.value_changed_callback = self._schedule_calculation
             self.ids.properties_layout.add_widget(prop)
         
         for type in basic_return_types:
