@@ -7,6 +7,10 @@ class strUi:
     max_length: int = 100
 
 @dataclass
+class passwordUi(strUi):
+    pass
+
+@dataclass
 class listUi:
     value: str = ""
     values: list = ""

@@ -1,5 +1,5 @@
 </div>
-<img src="./examples/example.png">
+<img src="./example.png">
 </div>
 
 **Easily turn your Python functions into GUI applications.**  
@@ -39,6 +39,7 @@ App(time_to_seconds)
   - `intUi` 
   - `boolUi`
   - `strUi`
+  - `passwordUi`
   - `listUi`
   - `floatUi`
   - `fileUi`

@@ -15,7 +15,7 @@ basic_return_types = ["strReturn", "intReturn", "boolReturn", "floatReturn"]
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
     
-    def __init__(self, function, width: int = 350, **kwargs):
+    def __init__(self, function: callable, width: int = 350, **kwargs):
         """
         Create the main layout of the app with the properties and result widgets.
         """
@@ -43,7 +43,7 @@ class MainLayout(BoxLayout):
             self.ids.result_layout.children[0].image_path = result
             self.ids.result_layout.children[0].ids.image.reload()
 
-    def _create_properties(self, properties):
+    def _create_properties(self, properties: dict):
         """
         Create the properties widgets based on the function parameters.
         """
@@ -55,7 +55,8 @@ class MainLayout(BoxLayout):
             "fileUi": CustomFileProperty,
             "floatUi": CustomFloatProperty,
             "colorUi": CustomColorProperty,
-            "folderUi": CustomFolderProperty
+            "folderUi": CustomFolderProperty,
+            "passwordUi": CustomPasswordProperty
         }
         
         for prop_name, prop_info in properties.items():
@@ -103,20 +104,22 @@ class MainLayout(BoxLayout):
 class App(KivyApp):
     """
     Create a Kivy app with a GUI for a given type-annotated function.
+    Args:
+        function (callable): The function to be used in the app.
+        width (int): The width of the app. Default is 350.
     """
     def __init__(self,
                  function: callable,
                  width: int = 350,
                  **kwargs):
         super().__init__(**kwargs)
-        self.function = function
-        self.user_max_width = width
-        self.title = "  " + function.__name__.replace("_", " ").title()
+        title = "  " + function.__name__.replace("_", " ").title()
+        self.main_layout = MainLayout(function, width=width, title=title)
+
         self.run()
 
     def build(self):
         """
         Create the main layout of the app.
         """
-        main_layout = MainLayout(self.function, width=self.user_max_width, title=self.title)
-        return main_layout
+        return self.main_layout

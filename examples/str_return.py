@@ -1,4 +1,4 @@
-from functogui import App, strUi, intUi, strReturn
+from functogui import App, strUi, intUi
 from typing import Annotated
 
 def hello_world(name: Annotated[str, strUi(max_length=10, min_length=3)] = "World",

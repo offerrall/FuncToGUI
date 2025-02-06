@@ -1,11 +1,11 @@
-from functogui.ui_types import intUi, strUi, fileUi, listUi, boolUi, floatUi, colorUi, folderUi
+from functogui.ui_types import intUi, strUi, boolUi, floatUi, colorUi
 from typing import Any, get_type_hints
 
 import inspect
 
 primite_types_allowed = ["int", "str", "bool", "float", "tuple"]
 
-ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi"]
+ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi", "passwordUi"]
 
 map_primitive_ui = {"int": intUi,
                     "str": strUi,
@@ -38,7 +38,7 @@ def get_return_type_name(func: callable) -> str:
     print(name)
     return name
 
-def inspect_params(func):
+def inspect_params(func: callable) -> dict:
     """
     Inspects function parameters and returns UI configuration info.
     

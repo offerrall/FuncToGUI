@@ -18,6 +18,7 @@ class CustomStrProperty(CustomProperty):
     value = StringProperty("")
     min_length = NumericProperty(0)
     max_length = NumericProperty(100)
+    password_mode = BooleanProperty(False)
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -36,6 +37,12 @@ class CustomStrProperty(CustomProperty):
 
         if self.value_changed_callback and len(value) >= self.min_length:
             self.value_changed_callback()
+
+class CustomPasswordProperty(CustomStrProperty):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.password_mode = True
 
 class CustomIntProperty(CustomProperty):
     value = NumericProperty(0)
