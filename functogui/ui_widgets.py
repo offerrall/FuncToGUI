@@ -27,14 +27,14 @@ class CustomStrProperty(CustomProperty):
 
     def set_property_value(self, value):
 
-        if len(value) < self.min_length or len(value) > self.max_length:
+        if len(value) > self.max_length:
             self.ids.str_textinput.text = self.value
             return
-
+        
         self.ids.str_textinput.text = value
         self.value = value
 
-        if self.value_changed_callback:
+        if self.value_changed_callback and len(value) >= self.min_length:
             self.value_changed_callback()
 
 class CustomIntProperty(CustomProperty):
