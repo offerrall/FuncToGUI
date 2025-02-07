@@ -9,5 +9,3 @@ if sistem == 'Windows' or sistem == 'Linux' or sistem == 'Darwin':
 from .ui_widgets import *
 from .ui_types import *
 from .app_builder import App
-
-print("Functogui loaded successfully!")

@@ -2,13 +2,6 @@
 #:set line_color [0.227, 0.223, 0.227, 1.0]
 #:set label_secundary_color [1, 1, 1, 0.6]
 
-
-<IntInput@TextInput>:
-    input_filter: 'int'
-    multiline: False
-    background_color: [0, 0, 0, 0.5]
-    foreground_color: [1, 1, 1, 1]
-
 <CustomProperty>
     orientation: 'horizontal'
     size_hint_y: None
@@ -23,6 +16,7 @@
 
 <CustomIntProperty>:
     BoxLayout:
+        id: numeric_layout
         orientation: 'horizontal'
 
         Slider:
@@ -33,18 +27,13 @@
             size_hint_x: 0.7
             on_value: root.set_property_value(self.value)
         
-        IntInput:
+        TextInput:
             id: int_textinput
             size_hint_x: 0.3
-            on_text: root.set_property_value(self.text)
-
-<CustomFloatProperty>:
-    BoxLayout:
-        orientation: 'horizontal'
-        
-        TextInput:
-            id: float_textinput
-            input_filter: 'float'
+            input_filter: 'int' if root.int_mode else 'float'
+            multiline: False
+            background_color: [0, 0, 0, 0.5]
+            foreground_color: [1, 1, 1, 1]
             on_text: root.set_property_value(self.text)
 
 <CustomStrProperty>:

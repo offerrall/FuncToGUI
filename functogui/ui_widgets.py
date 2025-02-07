@@ -48,60 +48,39 @@ class CustomIntProperty(CustomProperty):
     value = NumericProperty(0)
     min_value = NumericProperty(0)
     max_value = NumericProperty(0)
+    int_mode = BooleanProperty(True)
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def on_kv_post(self, base_widget):
         self.ids.int_textinput.text = str(self.value)
-        self.ids.int_slider.value = self.value
+        if self.int_mode:
+            self.ids.int_slider.value = self.value
 
     def set_property_value(self, value):
-        try:
-            if value == "":
-                return
-            
-            value = int(value)
-            value = max(self.min_value, min(value, self.max_value))
-            
-            self.ids.int_textinput.text = str(value)
-            self.ids.int_slider.value = value
-            self.value = value
+        if value == "":
+            return
+        
+        if value == "-":
+            return
 
-            if self.value_changed_callback:
-                self.value_changed_callback()
-        except ValueError:
-            pass
+        value = int(value) if self.int_mode else float(value)
+        
+        self.ids.int_textinput.text = str(value)
+        self.ids.int_slider.value = value
+        self.value = value
 
-class CustomFloatProperty(CustomProperty):
-    value = NumericProperty(0.0)
-    min_value = NumericProperty(0.0)
-    max_value = NumericProperty(0.0)
-    
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        if self.value_changed_callback:
+            self.value_changed_callback()
+
+class CustomFloatProperty(CustomIntProperty):
 
     def on_kv_post(self, base_widget):
-        self.ids.float_textinput.text = str(self.value)
+        self.int_mode = False
+        self.ids.numeric_layout.remove_widget(self.ids.int_slider)
+        super().on_kv_post(base_widget)
 
-    def set_property_value(self, value):
-        try:
-            if value == "":
-                return
-
-            value = float(value)
-            if value < self.min_value:
-                value = self.min_value
-            if value > self.max_value:
-                value = self.max_value
-            
-            self.ids.float_textinput.text = str(value)
-            self.value = value
-
-            if self.value_changed_callback:
-                self.value_changed_callback()
-        except ValueError:
-            pass
 
 class CustomBoolProperty(CustomProperty):
     value = BooleanProperty(False)

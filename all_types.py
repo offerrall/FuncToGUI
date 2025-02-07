@@ -4,6 +4,9 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageDraw
 
 EFFECTS = ["None", "Blur", "Contour", "Edge Enhance", "Sharpen"]
 
+# This is a simple example of a function that uses all the types of inputs and outputs.
+# The function itself doesn't make much sense, it's just to show you all the different types there are.
+
 def all_types_test(image_path: Annotated[str, fileUi] = "",
                    folder_path: Annotated[str, folderUi] = "",
                    brightness: Annotated[float, floatUi(min_value=0.0, max_value=2.0)] = 1.0,
@@ -14,7 +17,7 @@ def all_types_test(image_path: Annotated[str, fileUi] = "",
                    color: tuple[int, int, int, int] = (255, 0, 0, 125),
                    grayscale: bool = False
                    ) -> Annotated[str, imageFileReturn]:
-    
+
     print(f"folder_path: {folder_path}")
     print(f"password: {password}")
 

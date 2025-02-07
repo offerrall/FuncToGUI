@@ -35,7 +35,7 @@ def get_return_type_name(func: callable) -> str:
     if type(metadata) == type:
         metadata = metadata()
     name = metadata.__class__.__name__
-    print(name)
+
     return name
 
 def inspect_params(func: callable) -> dict:
