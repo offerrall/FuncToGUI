@@ -6,13 +6,36 @@
     orientation: 'horizontal'
     size_hint_y: None
     height: dp(30)
+    
+    canvas.before:
+        Color:
+            rgba: (1, 0, 0, 0.8) if root.error else (0, 0, 0, 0)
+        Line:
+            rounded_rectangle: [self.x - dp(5), self.y - dp(5), self.width + dp(10), self.height + dp(10), dp(10), dp(10)]
+            width: dp(1)
 
-    Label:
-        text: root.name
-        font_size: '15sp'
-        halign: 'left'
-        valign: 'middle'
-        text_size: self.size
+    BoxLayout:
+        id: property_info_layout
+        orientation: 'horizontal'
+
+        Label:
+            text: root.name
+            font_size: '15sp'
+            halign: 'left'
+            valign: 'middle'
+            text_size: self.size
+        
+        Label:
+            text: root.error
+            font_size: '15sp'
+            halign: 'right'
+            valign: 'middle'
+            text_size: self.size
+            color: [1, 0, 0, 0.8]
+        
+        Widget:
+            
+            
 
 <CustomIntProperty>:
     BoxLayout:

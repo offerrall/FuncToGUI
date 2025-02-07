@@ -10,6 +10,7 @@ from os.path import exists
 class CustomProperty(BoxLayout):
     name = StringProperty("Property")
     value_changed_callback = ObjectProperty(None)
+    error = StringProperty("")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -29,13 +30,18 @@ class CustomStrProperty(CustomProperty):
     def set_property_value(self, value):
 
         if len(value) > self.max_length:
-            self.ids.str_textinput.text = self.value
+            self.error = f"Max: {self.max_length}"
+            return
+        
+        if len(value) < self.min_length:
+            self.error = f"Min: {self.min_length}"
             return
         
         self.ids.str_textinput.text = value
         self.value = value
+        self.error = ""
 
-        if self.value_changed_callback and len(value) >= self.min_length:
+        if self.value_changed_callback:
             self.value_changed_callback()
 
 class CustomPasswordProperty(CustomStrProperty):
@@ -60,17 +66,27 @@ class CustomIntProperty(CustomProperty):
 
     def set_property_value(self, value):
         if value == "":
+            self.error = "Empty value"
             return
         
         if value == "-":
+            self.error = "Invalid value"
             return
 
         value = int(value) if self.int_mode else float(value)
         
         self.ids.int_textinput.text = str(value)
-        self.ids.int_slider.value = value
+        if self.int_mode:
+            self.ids.int_slider.value = value
         self.value = value
 
+        if self.min_value > value:
+            self.error = f"Min: {self.min_value}"
+            return
+        if self.max_value < value:
+            self.error = f"Max: {self.max_value}"
+            return
+        self.error = ""
         if self.value_changed_callback:
             self.value_changed_callback()
 
