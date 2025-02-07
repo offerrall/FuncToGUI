@@ -210,7 +210,7 @@
         Label:
             text: ' ' * 2 + 'Result'
             font_size: '16sp'
-            color: label_secundary_color
+            color: label_secundary_color if not root.error_message else (1, 0, 0, 0.8)
             size_hint_y: None
             height: dp(15)
             halign: 'left'
@@ -225,7 +225,7 @@
 
             canvas.before:
                 Color:
-                    rgba: line_color
+                    rgba: line_color if not root.error_message else (1, 0, 0, 0.8)
                 Line:
                     rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
                     width: dp(1)

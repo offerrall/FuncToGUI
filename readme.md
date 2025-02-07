@@ -52,6 +52,7 @@ App(time_to_seconds)
     - `floatReturn`
     - `imageFileReturn`
 - **Easily Extensible**: You can create your own UI types if you need something more specific.
+- **Error Handling**: FuncToGUI treats the exceptions already for you.
 
 ##  Installation
 ```bash
@@ -95,7 +96,6 @@ This library is designed to be as simple as possible. You only need look at the 
 - [ ] More parameter types (dateUi, timeUi, etc.)
 - [ ] More return types (plotReturn, jsonReturn, etc.)
 - [ ] Custom themes and styling through App class
-- [ ] Improved error handling
 - [ ] Better control widgets (sliders, dropdowns, etc.)
 - [ ] Better return widgets (images, plots, etc.)
 

@@ -10,10 +10,10 @@ from .inspect_fuction import inspect_params, get_return_type_name
 from .ui_widgets import *
 
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
-basic_return_types = ["strReturn", "intReturn", "boolReturn", "floatReturn"]
 
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
+    error_message = StringProperty("")
     
     def __init__(self, function: callable, width: int = 350, **kwargs):
         """
@@ -33,11 +33,19 @@ class MainLayout(BoxLayout):
         """
         props = {prop.name.lower().replace(" ", "_"): prop.value 
                 for prop in self.ids.properties_layout.children}
-        result = self.function(**props)
+        
+        try:
+            self.error_message = ""
+            result = self.function(**props)
+        except Exception as e:
+            self.error_message = str(e)
 
-        for type in basic_return_types:
+        for type in BASIC_RETURN_TYPES:
             if self.return_type == type:
-                self.ids.result_layout.children[0].text = str(result)
+                if not self.error_message:
+                    self.ids.result_layout.children[0].text = str(result)
+                else:
+                    self.ids.result_layout.children[0].text = f"Error: {self.error_message}"
         
         if self.return_type == "imageFileReturn":
             self.ids.result_layout.children[0].image_path = result
@@ -47,18 +55,6 @@ class MainLayout(BoxLayout):
         """
         Create the properties widgets based on the function parameters.
         """
-        PROPERTY_TYPES = {
-            "strUi": CustomStrProperty,
-            "intUi": CustomIntProperty,
-            "boolUi": CustomBoolProperty,
-            "listUi": CustomListProperty,
-            "fileUi": CustomFileProperty,
-            "floatUi": CustomFloatProperty,
-            "colorUi": CustomColorProperty,
-            "folderUi": CustomFolderProperty,
-            "passwordUi": CustomPasswordProperty
-        }
-        
         for prop_name, prop_info in properties.items():
             values = {
                 "name": prop_name.replace("_", " ").title(),
@@ -70,7 +66,7 @@ class MainLayout(BoxLayout):
             prop.value_changed_callback = self._schedule_calculation
             self.ids.properties_layout.add_widget(prop)
         
-        for type in basic_return_types:
+        for type in BASIC_RETURN_TYPES:
             if self.return_type == type:
                 self.ids.result_layout.add_widget(StrReturn())
         

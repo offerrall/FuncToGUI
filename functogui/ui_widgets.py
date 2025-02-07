@@ -261,3 +261,18 @@ class ImageFileReturn(BoxLayout):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+PROPERTY_TYPES = {
+    "strUi": CustomStrProperty,
+    "intUi": CustomIntProperty,
+    "boolUi": CustomBoolProperty,
+    "listUi": CustomListProperty,
+    "fileUi": CustomFileProperty,
+    "floatUi": CustomFloatProperty,
+    "colorUi": CustomColorProperty,
+    "folderUi": CustomFolderProperty,
+    "passwordUi": CustomPasswordProperty
+}
+
+BASIC_RETURN_TYPES = ["strReturn", "intReturn", "boolReturn", "floatReturn"]
