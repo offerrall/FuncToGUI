@@ -6,4 +6,4 @@ def test_password(password: Annotated[str, passwordUi(max_length=10, min_length=
     
     return f"Psswd: {password}"
 
-App(test_password)
+App(test_password, auto_update=False, width=500)

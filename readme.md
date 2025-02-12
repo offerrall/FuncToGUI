@@ -51,7 +51,6 @@ App(time_to_seconds)
     - `strReturn`
     - `floatReturn`
     - `imageFileReturn`
-- **Easily Extensible**: You can create your own UI types if you need something more specific.
 - **Error Handling**: FuncToGUI treats the exceptions already for you.
 
 ##  Installation

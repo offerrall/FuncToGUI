@@ -7,4 +7,4 @@ def divide(a: float = 3.0,
     return a / b # 0 division is handled by the UI
 
 
-App(divide)
+App(divide, auto_update=False)

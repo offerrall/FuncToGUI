@@ -11,7 +11,7 @@ def read_file_content(file_path: Annotated[str, fileUi] = "") -> str:
             content = file.read()
             return content
     except Exception as e:
-        return f"Error reading file: {str(e)}"
+        raise e
 
 
 App(read_file_content)
