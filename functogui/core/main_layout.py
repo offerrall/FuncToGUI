@@ -1,4 +1,3 @@
-from kivy.app import App as KivyApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty
 from kivy.core.window import Window
@@ -112,26 +111,3 @@ class MainLayout(BoxLayout):
         max_width = dp(self.user_max_width)
 
         Window.size = (max_width, total)
-
-class App(KivyApp):
-    """
-    Create a Kivy app with a GUI for a given type-annotated function.
-    Args:
-        function (callable): The function to be used in the app.
-        width (int): The width of the app. Default is 350.
-    """
-    def __init__(self,
-                 function: callable,
-                 width: int = 350,
-                 **kwargs):
-        super().__init__(**kwargs)
-        title = "  " + function.__name__.replace("_", " ").title()
-        self.main_layout = MainLayout(function, width=width, title=title)
-
-        self.run()
-
-    def build(self):
-        """
-        Create the main layout of the app.
-        """
-        return self.main_layout

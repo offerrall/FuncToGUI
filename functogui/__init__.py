@@ -4,7 +4,7 @@ from pathlib import Path
 from kivy.config import Config
 from .ui_widgets import *
 from .core.ui_types import *
-from .core.app_builder import App
+from .core.app import App
 
 if system() in ['Windows', 'Linux', 'Darwin']:
     Config.set('graphics', 'resizable', False)
