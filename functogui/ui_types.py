@@ -19,13 +19,13 @@ class listUi:
 class intUi:
     value: int = 0
     min_value: int = 0
-    max_value: int = 1000
+    max_value: int = 1000000
 
 @dataclass
 class floatUi:
     value: float = 0.0
     min_value: float = 0.0
-    max_value: float = 1000.0
+    max_value: float = 1000000.0
 
 @dataclass
 class boolUi:

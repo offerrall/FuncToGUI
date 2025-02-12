@@ -73,20 +73,22 @@ class CustomIntProperty(CustomProperty):
             self.error = "Invalid value"
             return
 
-        value = int(value) if self.int_mode else float(value)
+        self.value = int(value) if self.int_mode else float(value)
         
-        self.ids.int_textinput.text = str(value)
         if self.int_mode:
-            self.ids.int_slider.value = value
-        self.value = value
+            self.ids.int_slider.value = self.value
+            self.ids.int_textinput.text = str(self.value)
 
-        if self.min_value > value:
-            self.error = f"Min: {self.min_value}"
+        if self.min_value > self.value:
+            self.error = f"Min: {self.min_value:_.0f}"
             return
-        if self.max_value < value:
-            self.error = f"Max: {self.max_value}"
+        
+        if self.max_value < self.value:
+            self.error = f"Max: {self.max_value:_.0f}"
             return
+        
         self.error = ""
+        
         if self.value_changed_callback:
             self.value_changed_callback()
 
