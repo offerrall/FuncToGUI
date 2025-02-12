@@ -1,4 +1,4 @@
-from functogui.ui_types import intUi, strUi, boolUi, floatUi, colorUi
+from .ui_types import intUi, strUi, boolUi, floatUi, colorUi
 from typing import Any, get_type_hints
 
 import inspect

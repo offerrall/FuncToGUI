@@ -1,0 +1,91 @@
+#:set background_color [0.121, 0.117, 0.121, 1.0]
+#:set line_color [0.227, 0.223, 0.227, 1.0]
+#:set label_secundary_color [1, 1, 1, 0.6]
+
+
+<MainLayout>:
+    orientation: 'vertical'
+    padding: dp(10)
+    size_hint_y: None
+    height: self.minimum_height
+
+    canvas.before:
+        Color:
+            rgba: background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    
+    Label:
+        id: title_label
+        text: root.title
+        font_size: '17sp'
+        size_hint_y: None
+        height: dp(40)
+
+        canvas.before:
+            Color:
+                rgba: line_color
+            Line:
+                rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
+                width: dp(1)
+
+    BoxLayout:
+        id: properties_layout_container
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+        
+        Label:
+            id: properties_label
+            text: ' ' * 2 + 'Properties'
+            font_size: '16sp'
+            size_hint_y: None
+            color: label_secundary_color
+            height: dp(15)
+            halign: 'left'
+            valign: 'middle'
+            text_size: self.size
+
+        BoxLayout:
+            id: properties_layout
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(10)
+            size_hint_y: None
+            size: self.minimum_size
+
+            canvas.before:
+                Color:
+                    rgba: line_color
+                Line:
+                    rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
+                    width: dp(1)
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+        
+        Label:
+            text: ' ' * 2 + 'Result'
+            font_size: '16sp'
+            color: label_secundary_color if not root.error_message else (1, 0, 0, 0.8)
+            size_hint_y: None
+            height: dp(15)
+            halign: 'left'
+            valign: 'middle'
+            text_size: self.size
+        
+        BoxLayout:
+            orientation: 'vertical'
+            id: result_layout
+            size_hint_y: None
+            height: self.minimum_height
+
+            canvas.before:
+                Color:
+                    rgba: line_color if not root.error_message else (1, 0, 0, 0.8)
+                Line:
+                    rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
+                    width: dp(1)

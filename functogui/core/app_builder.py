@@ -1,19 +1,15 @@
 from kivy.app import App as KivyApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty
-from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.metrics import dp
 from kivy.clock import Clock
-from pathlib import Path
 
 from .inspect_fuction import *
-from .ui_widgets import *
+from ..ui_widgets import *
 
-from .ui_widgets import PROPERTY_TYPES
-from .return_widgets import StrReturn, ImageFileReturn
-
-Builder.load_file(str(Path(__file__).parent / "styles.kv"))
+from ..ui_widgets import PROPERTY_TYPES
+from ..return_widgets import StrReturn, ImageFileReturn
 
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")

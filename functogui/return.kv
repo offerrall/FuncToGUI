@@ -1,0 +1,31 @@
+
+
+<StrReturn>:
+    size_hint_y: None
+    height: dp(120)
+    orientation: 'vertical'
+    padding: dp(10)
+    
+    Label:
+        text: root.text
+        font_size: '15sp'
+        color: label_secundary_color
+        halign: 'center'
+        valign: 'middle'
+        text_size: self.size
+    
+    Button:
+        text: 'Copy'
+        size_hint_y: None
+        height: dp(30)
+        on_press: root.copy_text()
+
+<ImageFileReturn>:
+    size_hint_y: None
+    height: dp(300)
+    orientation: 'vertical'
+    padding: dp(10)
+    
+    Image:
+        id: image
+        source: root.image_path
