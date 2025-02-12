@@ -16,9 +16,9 @@ class App(KivyApp):
                  **kwargs):
         super().__init__(**kwargs)
         title = function.__name__.replace("_", " ").title()
+        self.title = title
         self.main_layout = MainLayout(function,
                                       width=width,
-                                      title=title,
                                       auto_update=auto_update)
         self.run()
 
