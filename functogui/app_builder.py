@@ -1,15 +1,20 @@
 from kivy.app import App as KivyApp
 from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import StringProperty
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.metrics import dp
 from kivy.clock import Clock
 from pathlib import Path
 
-from .inspect_fuction import inspect_params, get_return_type_name
+from .inspect_fuction import *
 from .ui_widgets import *
 
+from .ui_widgets import PROPERTY_TYPES
+from .return_widgets import StrReturn, ImageFileReturn
+
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
+
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
     error_message = StringProperty("")
@@ -42,7 +47,7 @@ class MainLayout(BoxLayout):
         """
         if self.has_any_errors():
             self.error_message = "Cannot execute while there are validation errors"
-            for type in BASIC_RETURN_TYPES:
+            for type in basic_return_types:
                 if self.return_type == type:
                     self.ids.result_layout.children[0].text = f"Error: {self.error_message}"
             return
@@ -56,7 +61,7 @@ class MainLayout(BoxLayout):
         except Exception as e:
             self.error_message = str(e)
 
-        for type in BASIC_RETURN_TYPES:
+        for type in basic_return_types:
             if self.return_type == type:
                 if not self.error_message:
                     self.ids.result_layout.children[0].text = str(result)
@@ -82,7 +87,7 @@ class MainLayout(BoxLayout):
             prop.value_changed_callback = self._schedule_calculation
             self.ids.properties_layout.add_widget(prop)
         
-        for type in BASIC_RETURN_TYPES:
+        for type in basic_return_types:
             if self.return_type == type:
                 self.ids.result_layout.add_widget(StrReturn())
         

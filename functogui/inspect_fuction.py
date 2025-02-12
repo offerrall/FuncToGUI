@@ -7,6 +7,8 @@ primite_types_allowed = ["int", "str", "bool", "float", "tuple"]
 
 ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi", "passwordUi"]
 
+basic_return_types = ["strReturn", "intReturn", "boolReturn", "floatReturn"]
+
 map_primitive_ui = {"int": intUi,
                     "str": strUi,
                     "bool": boolUi,
