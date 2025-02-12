@@ -10,7 +10,6 @@ from .inspect_fuction import inspect_params, get_return_type_name
 from .ui_widgets import *
 
 Builder.load_file(str(Path(__file__).parent / "styles.kv"))
-
 class MainLayout(BoxLayout):
     title = StringProperty("Function GUI")
     error_message = StringProperty("")
@@ -27,10 +26,27 @@ class MainLayout(BoxLayout):
         self._create_properties(inspect_params(function))
         Clock.schedule_once(self.calculate_function, 0.1)
 
+    def has_any_errors(self):
+        """
+        Check if any property widget has an error.
+        """
+        for prop in self.ids.properties_layout.children:
+            if prop.error:
+                return True
+        return False
+
     def calculate_function(self, *_):
         """
         Calculate the function with the current properties and update the result.
+        Only executes if no properties have errors.
         """
+        if self.has_any_errors():
+            self.error_message = "Cannot execute while there are validation errors"
+            for type in BASIC_RETURN_TYPES:
+                if self.return_type == type:
+                    self.ids.result_layout.children[0].text = f"Error: {self.error_message}"
+            return
+
         props = {prop.name.lower().replace(" ", "_"): prop.value 
                 for prop in self.ids.properties_layout.children}
         
@@ -78,14 +94,13 @@ class MainLayout(BoxLayout):
     def _schedule_calculation(self):
         """
         Schedule the calculation of the function with the current properties.
-        This is used to avoid calling the function too many times when the user is changing the properties.
         """
         Clock.unschedule(self.calculate_function)
         Clock.schedule_once(self.calculate_function, 0.03)
     
     def _ajust_size(self, *_):
         """
-        Ajust the size of the window based on the properties and result widgets.
+        Adjust the size of the window based on the properties and result widgets.
         """
         total = 0
         total += self.padding[1] + self.padding[3]
