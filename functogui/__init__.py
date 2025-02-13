@@ -1,5 +1,7 @@
 from platform import system
 from kivy.config import Config
+Config.set('input', 'mouse', 'mouse,disable_multitouch')
+
 if system() in ['Windows', 'Linux', 'Darwin']:
     Config.set('graphics', 'resizable', False)
 
