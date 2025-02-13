@@ -27,7 +27,7 @@ class MainLayout(BoxLayout):
         self._create_properties(inspect_params(function))
         
         if self.auto_update:
-            self.remove_widget(self.ids.apply_function_button_layout)
+            self.remove_widget(self.ids.apply_button)
             Clock.schedule_once(self.calculate_function, 0.1)
             print("Auto update is on")
             return
@@ -126,11 +126,11 @@ class MainLayout(BoxLayout):
         total += self.ids.title_label.height
         total += self.ids.result_layout.height
         total += self.ids.properties_layout.height
-        padding = dp(10) * 3
+        padding = dp(10) * 2
         total += padding
 
         if not self.auto_update:
-            total += dp(30)
+            total += dp(40)
 
         max_width = dp(self.user_max_width)
 
