@@ -1,6 +1,7 @@
 <MainLayout>:
     orientation: 'vertical'
     padding: dp(10)
+    spacing: dp(10)
     size_hint_y: None
     height: self.minimum_height
 
@@ -56,15 +57,6 @@
                 Line:
                     rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
                     width: dp(1)
-    BoxLayout:
-        id: apply_function_button_layout
-        padding: dp(10)
-        size_hint_y: None
-        height: self.minimum_height
-        CustomButton:
-            text: 'Apply'
-            on_release: root.apply_function_button()
-
 
     BoxLayout:
         id: result_layout_container
@@ -94,3 +86,7 @@
                 Line:
                     rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
                     width: dp(1)
+
+    CustomButton:
+        text: 'Apply'
+        on_release: root.apply_function_button()

@@ -126,9 +126,11 @@ class MainLayout(BoxLayout):
         total += self.ids.title_label.height
         total += self.ids.result_layout.height
         total += self.ids.properties_layout.height
+        padding = dp(10) * 3
+        total += padding
 
         if not self.auto_update:
-            total += dp(50)
+            total += dp(30)
 
         max_width = dp(self.user_max_width)
 

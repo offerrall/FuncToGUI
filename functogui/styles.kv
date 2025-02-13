@@ -10,7 +10,15 @@
 
     canvas.before:
         Color:
-            rgba: line_color if not self.is_hovered else line_selected_color
-        Line:
-            rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
-            width: dp(1)
+            rgba: (0, 0 , 0, 0) if not self.is_hovered else line_selected_color
+        RoundedRectangle:
+            size: self.size[0] + dp(2), self.size[1] + dp(2)
+            pos: self.pos[0] - dp(1), self.pos[1] - dp(1)
+            radius: [dp(5),]
+        
+        Color:
+            rgba: line_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [dp(5),]
