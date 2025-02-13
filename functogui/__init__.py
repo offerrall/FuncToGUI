@@ -12,5 +12,7 @@ from .ui_widgets import *
 from .core.ui_types import *
 from .core.app import App
 
-for kv in ['main', 'ui_widgets', 'return']:
+from .styles import *
+
+for kv in ['styles', 'main', 'ui_widgets', 'return']:
     Builder.load_file(str(Path(__file__).parent / f"{kv}.kv"))

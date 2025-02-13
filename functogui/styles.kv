@@ -1,0 +1,16 @@
+#:set background_color [0.121, 0.117, 0.121, 1.0]
+#:set line_color [0.227, 0.223, 0.227, 1.0]
+#:set label_secundary_color [1, 1, 1, 0.6]
+
+
+<CustomButton>:
+    size_hint_y: None
+    height: dp(30)
+    background_color: [0.0, 0.0, 0.0, 0.0]
+
+    canvas.before:
+        Color:
+            rgba: line_color
+        Line:
+            rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
+            width: dp(1)

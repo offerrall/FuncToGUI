@@ -14,19 +14,9 @@
         valign: 'middle'
         text_size: self.size
     
-    Button:
+    CustomButton:
         text: 'Copy'
-        size_hint_y: None
-        height: dp(30)
         on_press: root.copy_text()
-        background_color: [0.0, 0.0, 0.0, 0.0]
-
-        canvas.before:
-            Color:
-                rgba: line_color
-            Line:
-                rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
-                width: dp(1)
 
 <ImageFileReturn>:
     size_hint_y: None
