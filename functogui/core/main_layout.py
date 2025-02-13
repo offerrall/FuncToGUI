@@ -61,13 +61,13 @@ class MainLayout(BoxLayout):
                     self.ids.result_layout.children[0].text = f"Error: {self.error_message}"
             return
 
+        self.ids.result_layout_container.opacity = 1
         props = {prop.name.lower().replace(" ", "_"): prop.value 
                 for prop in self.ids.properties_layout.children}
         
         try:
             self.error_message = ""
             result = self.function(**props)
-            self.ids.result_layout_container.opacity = 1
         except Exception as e:
             self.error_message = str(e)
 
