@@ -1,4 +1,5 @@
 from kivy.properties import StringProperty, ObjectProperty, NumericProperty, BooleanProperty
+from kivy.core.clipboard import Clipboard
 from .ui_base import CustomProperty
 
 
@@ -13,9 +14,17 @@ class CustomStrProperty(CustomProperty):
 
     def on_kv_post(self, base_widget):
         self.ids.str_textinput.text = self.value
+    
+    def on_touch_down(self, touch):
+        if touch.button == "right":
+            if self.collide_point(*touch.pos):
+                clipboard_text = Clipboard.paste()
+                if clipboard_text:
+                    self.set_property_value(clipboard_text)
+                return True
+        return super().on_touch_down(touch)
 
     def set_property_value(self, value):
-
         if len(value) > self.max_length:
             self.error = f"Max: {self.max_length}"
         elif len(value) < self.min_length:
