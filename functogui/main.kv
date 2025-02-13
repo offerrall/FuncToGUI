@@ -70,7 +70,15 @@
             text: 'Apply'
             size_hint_y: None
             height: dp(30)
+            background_color: [0.0, 0.0, 0.0, 0.0]
             on_release: root.apply_function_button()
+
+            canvas.before:
+                Color:
+                    rgba: line_color
+                Line:
+                    rounded_rectangle: [self.x, self.y, self.width, self.height, dp(10), dp(10)]
+                    width: dp(1)
 
     BoxLayout:
         id: result_layout_container

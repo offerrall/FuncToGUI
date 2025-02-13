@@ -4,7 +4,7 @@ from kivy.core.clipboard import Clipboard
 
 
 class StrReturn(BoxLayout):
-    text = StringProperty("")
+    text = StringProperty("Waiting...")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
