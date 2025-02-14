@@ -1,13 +1,15 @@
-from kivy.properties import StringProperty, ObjectProperty, NumericProperty, BooleanProperty
+from kivy.properties import StringProperty, NumericProperty, BooleanProperty
 from kivy.core.clipboard import Clipboard
-from .ui_base import CustomProperty
+import re
 
+from .ui_base import CustomProperty
 
 class CustomStrProperty(CustomProperty):
     value = StringProperty("")
     min_length = NumericProperty(0)
     max_length = NumericProperty(100)
     password_mode = BooleanProperty(False)
+    regex_pattern = StringProperty("")
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -24,23 +26,33 @@ class CustomStrProperty(CustomProperty):
                 return True
         return super().on_touch_down(touch)
 
-    def set_property_value(self, value):
-        if len(value) > self.max_length:
-            self.error = f"Max: {self.max_length}"
-        elif len(value) < self.min_length:
-            self.error = f"Min: {self.min_length}"
-        else:
-            self.error = ""
-        
-        self.ids.str_textinput.text = value
-        self.value = value
+    def validate_value(self, value):
 
-        if self.value_changed_callback:
-            self.value_changed_callback()
+        if len(value) > self.max_length:
+            return False, f"Max: {self.max_length}"
+        if len(value) < self.min_length:
+            return False, f"Min: {self.min_length}"
+
+        if self.regex_pattern:
+            if not re.match(self.regex_pattern, value):
+                return False, "Invalid format"
+        
+        return True, ""
+
+    def set_property_value(self, value):
+        """Sets the property value after validation"""
+        is_valid, error_message = self.validate_value(value)
+        self.error = error_message
+        
+        if is_valid:
+            self.ids.str_textinput.text = value
+            self.value = value
+            
+            if self.value_changed_callback:
+                self.value_changed_callback()
 
 
 class CustomPasswordProperty(CustomStrProperty):
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.password_mode = True

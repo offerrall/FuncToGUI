@@ -5,6 +5,7 @@ class strUi:
     value: str = ""
     min_length: int = 0
     max_length: int = 100
+    regex_pattern: str = ""
 
 @dataclass
 class passwordUi(strUi):
