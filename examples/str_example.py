@@ -11,7 +11,5 @@ def validate_email(email: Annotated[str, strUi(min_length=5,
     return f"Valid email: {email}"
 
 
-# Example usage:
 if __name__ == "__main__":
-    # Choose which validation to run
     App(validate_email)
