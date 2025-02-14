@@ -45,6 +45,7 @@ App(time_to_seconds)
   - `fileUi`
   - `folderUi`
   - `colorUi`
+  - `timeUi`
 - **Supports Various Return Types**:
     - `boolReturn`
     - `intReturn`
