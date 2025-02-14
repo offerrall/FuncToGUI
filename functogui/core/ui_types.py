@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 @dataclass
 class strUi:
@@ -38,6 +38,8 @@ class colorUi:
 @dataclass
 class fileUi:
     value: str = ""
+    multiple: bool = False
+    filters: list = field(default_factory=list)
 
 @dataclass
 class folderUi:

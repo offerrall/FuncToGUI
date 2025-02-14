@@ -64,9 +64,6 @@ class MainLayout(BoxLayout):
         if not self.auto_update:
             self.ids.apply_button.text = "Calculating..."
         
-        if self.return_type == "imageFileReturn":
-            self.ids.result_layout.children[0].image_path = None
-        
         thread = threading.Thread(target=self._execute_function, args=(props,))
         thread.daemon = True
         thread.start()

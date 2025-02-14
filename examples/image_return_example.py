@@ -2,12 +2,11 @@ from functogui import App, intUi, fileUi, imageFileReturn
 from typing import Annotated
 from PIL import Image, ImageEnhance
 
-
-def process_image(image_path: Annotated[str, fileUi] = "",
+def process_image(image_path: Annotated[str, fileUi(filters=[["Image", "*.png", "*.jpg", "*.jpge"]])] = "",
                   brightness: Annotated[int, intUi(100, max_value=200)] = 100,
                   rotate: Annotated[int, intUi(max_value=360)] = 0,
                   flip: bool = False
-                  ) -> Annotated[str, imageFileReturn]:
+                  ) -> Annotated[str, imageFileReturn]: # Must return a string with the path of the image file
 
     if not image_path:
         return ""
