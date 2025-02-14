@@ -98,3 +98,25 @@
         id: folder_button
         text: ""
         on_press: root.open_folder_dialog()
+
+<CustomTimeProperty>:
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Spinner:
+            id: time_spinner_hour
+            text: root.hour
+            values: []
+            on_text: root.set_property_value()
+        
+        Spinner:
+            id: time_spinner_minute
+            text: root.minutes
+            values: []
+            on_text: root.set_property_value()
+        
+        Spinner:
+            id: time_spinner_pm_am
+            text: ""
+            values: ["AM", "PM"]
+            on_text: root.set_property_value()

@@ -5,6 +5,7 @@ from .ui_list import *
 from .ui_numeric import *
 from .ui_str import *
 from .ui_os import *
+from .ui_time import *
 
 
 
@@ -17,5 +18,7 @@ PROPERTY_TYPES = {
     "floatUi": CustomFloatProperty,
     "colorUi": CustomColorProperty,
     "folderUi": CustomFolderProperty,
-    "passwordUi": CustomPasswordProperty
+    "passwordUi": CustomPasswordProperty,
+    "dateUi": CustomTimeProperty,
+    "timeUi": CustomTimeProperty,
 }

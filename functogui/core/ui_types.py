@@ -45,6 +45,10 @@ class fileUi:
 @dataclass
 class folderUi:
     value: str = ""
+    
+@dataclass
+class timeUi:
+    value: str = ""
 
 class strReturn:
     pass
