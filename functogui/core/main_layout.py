@@ -97,6 +97,8 @@ class MainLayout(BoxLayout):
             self.ids.apply_button.text = "Apply"
 
     def _update_error(self, *args):
+        if not self.auto_update:
+            self.ids.apply_button.text = "Apply"
         for type in basic_return_types:
             if self.return_type == type:
                 self.ids.result_layout.children[0].text = f"Error: {self.error_message}"
