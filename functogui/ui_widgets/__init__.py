@@ -6,6 +6,7 @@ from .ui_numeric import *
 from .ui_str import *
 from .ui_os import *
 from .ui_time import *
+from .ui_date import *
 
 
 
@@ -19,6 +20,6 @@ PROPERTY_TYPES = {
     "colorUi": CustomColorProperty,
     "folderUi": CustomFolderProperty,
     "passwordUi": CustomPasswordProperty,
-    "dateUi": CustomTimeProperty,
     "timeUi": CustomTimeProperty,
+    "dateUi": CustomDateProperty,
 }

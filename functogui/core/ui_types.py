@@ -50,6 +50,10 @@ class folderUi:
 class timeUi:
     value: str = ""
 
+@dataclass
+class dateUi:
+    value: str = ""
+
 class strReturn:
     pass
 

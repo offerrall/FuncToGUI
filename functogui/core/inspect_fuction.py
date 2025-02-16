@@ -5,7 +5,7 @@ import inspect
 
 primite_types_allowed = ["int", "str", "bool", "float", "tuple"]
 
-ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi", "passwordUi", "timeUi"]
+ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi", "passwordUi", "timeUi", "dateUi"]
 
 basic_return_types = ["strReturn", "intReturn", "boolReturn", "floatReturn"]
 

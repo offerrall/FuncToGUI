@@ -3,7 +3,7 @@
 </div>
 
 **Easily turn your Python functions into GUI applications.**  
-Perfect for internal tools, quick testing, or prototypes. FuncToGUI is cross-platform, updates in real-time, and requires no additional UI code. Implemented in 1000 lines of code!
+Perfect for internal tools, quick testing, or prototypes. FuncToGUI is cross-platform, updates in real-time, and requires no additional UI code. Implemented in 1500 lines of code!
 
 FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://github.com/kivy/plyer) for file handling.
 
@@ -34,7 +34,7 @@ App(time_to_seconds)
 
 ## Key Features
 - **Function-to-GUI Transformation**: Turn your function parameters into a GUI interface with minimal setup.
-- **No Complex Configuration**: Just define your function with the desired [`ui_types`](./functogui/ui_types.py) and let FuncToGUI generate the window.
+- **No Complex Configuration**: Just define your function with the desired [`ui_types`](./functogui/core/ui_types.py) and let FuncToGUI generate the window.
 - **Supports Various Parameter Types**:
   - `intUi` 
   - `boolUi`
@@ -46,6 +46,7 @@ App(time_to_seconds)
   - `folderUi`
   - `colorUi`
   - `timeUi`
+  - `dateUi`
 - **Supports Various Return Types**:
     - `boolReturn`
     - `intReturn`

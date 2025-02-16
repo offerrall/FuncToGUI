@@ -120,3 +120,9 @@
             text: ""
             values: ["AM", "PM"]
             on_text: root.set_property_value()
+
+<CustomDateProperty>:
+    CustomButton:
+        id: date_picker_button
+        text: root.value
+        on_press: root.open_file_dialog()
