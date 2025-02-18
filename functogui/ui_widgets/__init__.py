@@ -7,6 +7,7 @@ from .ui_str import *
 from .ui_os import *
 from .ui_time import *
 from .ui_date import *
+from .ui_seleted import *
 
 
 
@@ -22,4 +23,5 @@ PROPERTY_TYPES = {
     "passwordUi": CustomPasswordProperty,
     "timeUi": CustomTimeProperty,
     "dateUi": CustomDateProperty,
+    "selectedUi": CustomSeletedProperty,
 }

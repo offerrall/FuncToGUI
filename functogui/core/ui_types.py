@@ -54,6 +54,13 @@ class timeUi:
 class dateUi:
     value: str = ""
 
+@dataclass
+class selectedUi:
+    value: list = field(default_factory=list)
+    values: list = field(default_factory=list)
+    min_selected: int = 0
+    max_selected: int = 1_000_000
+
 class strReturn:
     pass
 

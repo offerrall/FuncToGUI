@@ -3,9 +3,9 @@ from typing import Any, get_type_hints
 
 import inspect
 
-primite_types_allowed = ["int", "str", "bool", "float", "tuple"]
+primite_types_allowed = ["int", "str", "bool", "float", "tuple", "list"]
 
-ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi", "passwordUi", "timeUi", "dateUi"]
+ui_types = ["intUi", "strUi", "fileUi", "listUi", "boolUi", "floatUi", "colorUi", "folderUi", "passwordUi", "timeUi", "dateUi", "selectedUi"]
 
 basic_return_types = ["strReturn", "intReturn", "boolReturn", "floatReturn"]
 

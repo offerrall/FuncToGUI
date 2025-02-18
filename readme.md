@@ -41,6 +41,7 @@ App(time_to_seconds)
   - `strUi`
   - `passwordUi`
   - `listUi`
+  - `selectedUi`
   - `floatUi`
   - `fileUi`
   - `folderUi`

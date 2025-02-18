@@ -125,4 +125,57 @@
     CustomButton:
         id: date_picker_button
         text: root.value
-        on_press: root.open_file_dialog()
+
+<ItemSelected>
+    size_hint_y: None
+    height: dp(50)
+
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: line_selected_color if not root.selected else (0, 0, 0, 0)
+            RoundedRectangle:
+                pos: self.pos[0] - dp(2), self.pos[1] - dp(2)
+                size: self.size[0] + dp(4), self.size[1] + dp(4)
+                radius: [dp(10),]
+
+            Color:
+                rgba: line_color if not root.selected else (0.5, 0.5, 0.5, 0.1)
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(10),]
+    
+        Label:
+            text: root.text
+            font_size: '15sp'
+
+<ModalSelected>:
+    orientation: 'vertical'
+    padding: dp(10)
+    spacing: dp(10)
+    Label:
+        id: selected_label
+        text: "0 Selected"
+        size_hint_y: None
+        height: dp(30)
+    ScrollView:
+        id: selected_scrollview
+        do_scroll_x: False
+        do_scroll_y: True
+        effect_cls: "ScrollEffect"
+        BoxLayout:
+            id: selected_layout
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            padding: dp(10)
+            spacing: dp(10)
+    CustomButton:
+        id: selected_button
+        text: "Apply"
+
+<CustomSeletedProperty>:
+    CustomButton:
+        id: selected_button
+        text: "0 Selected"
