@@ -1,7 +1,7 @@
 from functogui import App, selectedUi
 from typing import Annotated
 
-def rename_seleted(selected: Annotated[list, selectedUi(values=["days", "hours", "minutes", "seconds"],
+def rename_selected(selected: Annotated[list, selectedUi(values=["days", "hours", "minutes", "seconds"],
                                                         min_selected=2,
                                                         max_selected=3
                                                         )] = ["days", "hours"]
@@ -17,4 +17,4 @@ def rename_seleted(selected: Annotated[list, selectedUi(values=["days", "hours",
     return " ".join([rename_names.get(name, name) for name in selected])
 
 
-App(rename_seleted)
+App(rename_selected)
