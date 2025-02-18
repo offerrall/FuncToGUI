@@ -3,8 +3,8 @@ from functogui.core.ui_types import timeUi
 from typing import Annotated
 from datetime import datetime
 
-def time_diff(time1: Annotated[str, timeUi()] = "9:00 AM",
-              time2: Annotated[str, timeUi()] = "5:00 PM"
+def time_diff(time1: Annotated[str, timeUi] = "9:00 AM",
+              time2: Annotated[str, timeUi] = "5:00 PM"
               ) -> str:
     t1 = datetime.strptime(time1, "%I:%M %p")
     t2 = datetime.strptime(time2, "%I:%M %p")
