@@ -75,6 +75,7 @@ class MainLayout(BoxLayout):
             Clock.schedule_once(partial(self._update_result, result))
         except Exception as e:
             self.error_message = str(e)
+            print(f"Error: {e}")
             Clock.schedule_once(self._update_error)
         finally:
             Clock.schedule_once(lambda dt: setattr(self, '_is_executing', False))
