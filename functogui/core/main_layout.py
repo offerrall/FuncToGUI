@@ -125,7 +125,7 @@ class MainLayout(BoxLayout):
         if not self.auto_update:
             return
         Clock.unschedule(self.calculate_function)
-        Clock.schedule_once(self.calculate_function, 0.03)
+        Clock.schedule_once(self.calculate_function, 0.01)
     
     def _ajust_size(self, *_):
         total = 0
