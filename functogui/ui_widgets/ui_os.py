@@ -1,6 +1,7 @@
 from kivy.properties import StringProperty, BooleanProperty, ListProperty
 from .ui_base import CustomProperty
 from plyer import filechooser
+import os
 
 class CustomFileProperty(CustomProperty):
     value = StringProperty("")
@@ -22,14 +23,19 @@ class CustomFileProperty(CustomProperty):
         self.ids.file_button.text = file
     
     def open_file_dialog(self):
-        file_path = filechooser.open_file(multiple=self.multiple, filters=self.filters)
+        original_dir = os.getcwd()
+        
+        try:
+            file_path = filechooser.open_file(multiple=self.multiple, filters=self.filters)
 
-        if file_path:
-            self.value = ",".join(file_path) if self.multiple else file_path[0]
-            self.set_button_text()
+            if file_path:
+                self.value = ",".join(file_path) if self.multiple else file_path[0]
+                self.set_button_text()
 
-            if self.value_changed_callback:
-                self.value_changed_callback()
+                if self.value_changed_callback:
+                    self.value_changed_callback()
+        finally:
+            os.chdir(original_dir)
 
 
 class CustomFolderProperty(CustomProperty):
@@ -51,11 +57,16 @@ class CustomFolderProperty(CustomProperty):
         self.ids.folder_button.text = folder
     
     def open_folder_dialog(self):
-        folder_path = filechooser.choose_dir()
+        original_dir = os.getcwd()
+        
+        try:
+            folder_path = filechooser.choose_dir()
 
-        if folder_path:
-            self.value = folder_path[0]
-            self.set_button_text()
+            if folder_path:
+                self.value = folder_path[0]
+                self.set_button_text()
 
-            if self.value_changed_callback:
-                self.value_changed_callback()
+                if self.value_changed_callback:
+                    self.value_changed_callback()
+        finally:
+            os.chdir(original_dir)
