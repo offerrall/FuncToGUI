@@ -21,7 +21,11 @@ class CustomIntProperty(CustomProperty):
         if isinstance(value, (int, float)):
             return int(value) if self.int_mode else float(value)
         
-        clean_value = value.strip().replace("-", "")
+        clean_value = value.strip()
+
+        if clean_value == "-":
+            raise ValueError("- is not a valid number")
+
         if not clean_value:
             raise ValueError("Empty value")
             
