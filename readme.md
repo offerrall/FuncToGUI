@@ -7,7 +7,7 @@ FuncToGUI is built on top of [Kivy](https://kivy.org/) and [pyler](https://githu
 
 <img src="./example.png">
 
-Looking for a web-based version? Check out FuncToWeb - same concept, but generates web interfaces instead of desktop GUIs. Perfect for sharing tools with others or deploying to servers. Only 300 lines of Python!
+Looking for a web-based version? Check out FuncToWeb - same concept, but generates web interfaces instead of desktop GUIs.
 [FuncToWeb](https://github.com/offerrall/FuncToWeb)
 
 ---
